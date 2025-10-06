@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import date
 from model.lote import Lote
 from model.veiculo import Veiculo
 from model.empresa import Empresa
