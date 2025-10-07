@@ -76,9 +76,9 @@ Entidades e Atributos
 - LOG_LOT
 	pk - id_log not null
 	fk - id_lot not null
-	fk - id_veiculo not null
-	fk - id_empresa not null
-	fk - id_manutencao not null
+	fk - id_veiculo
+	fk - id_empresa
+	fk - id_manutencao
 	fk - id_catalogo_eventos not null
 	data_evento -> DATE not null
 	obs_evento -> CLOB
