@@ -1,0 +1,102 @@
+## mermaidchart diagram code ##
+erDiagram
+    USUARIOS {
+        int id_usuario PK
+        string nome_completo
+        string email_usuario
+        string senha_hash
+    }
+    EMPRESAS {
+        int id_empresa PK
+        string nome_fantasia
+        string endereco
+    }
+    CONTATOS {
+        int id_contato PK
+        string nome_contato
+        string email_contato
+        string telefone
+    }
+    EMPRESA_CONTATOS {
+        int id_empresa PK, FK
+        int id_contato PK, FK
+    }
+    VEICULOS {
+        int id_veiculo PK
+        string placa
+        string frota
+        int id_empresa FK
+    }
+    TECNICOS {
+        int id_tecnico PK
+        string local
+        int id_contato FK
+    }
+    TECNICOS_EMPRESAS {
+        int id_tecnico PK, FK
+        int id_empresa PK, FK
+    }
+    VISITAS_TECNICAS {
+        int id_visita PK
+        date data_visita
+        int id_tecnico FK
+    }
+    LOTS {
+        int id_lot PK
+        string codigo_lot
+        string obs_lot
+    }
+    CATALOGO_DEFEITOS {
+        int id_catalogo_defeito PK
+        string codigo_defeito
+        string descricao_defeito
+    }
+    CATALOGO_ACOES {
+        int id_catalogo_acao PK
+        string codigo_acao
+        string descricao_acao
+    }
+    CATALOGO_EVENTOS {
+        int id_catalogo_eventos PK
+        string codigo_evento
+    }
+    DEFEITOS {
+        int id_defeito PK
+        date data_reporte
+        string status_defeito
+        int id_catalogo_defeito FK
+        int id_veiculo FK
+    }
+    MANUTENCOES {
+        int id_manutencao PK
+        int id_visita FK
+        int id_catalogo_acao FK
+        int id_defeito FK
+    }
+    LOG_LOT {
+        int id_log PK
+        date data_evento
+        string responsavel_evento
+        int id_lot FK
+        int id_veiculo FK
+        int id_empresa FK
+        int id_manutencao FK
+        int id_catalogo_eventos FK
+    }
+    EMPRESAS ||--|{ VEICULOS : "possui"
+    EMPRESAS ||--o{ EMPRESA_CONTATOS : "tem"
+    CONTATOS ||--o{ EMPRESA_CONTATOS : "é"
+    EMPRESAS ||--o{ TECNICOS_EMPRESAS : "contrata"
+    TECNICOS ||--o{ TECNICOS_EMPRESAS : "atende"
+    CONTATOS ||--|| TECNICOS : "é um"
+    TECNICOS ||--|{ VISITAS_TECNICAS : "realiza"
+    VISITAS_TECNICAS ||--|{ MANUTENCOES : "justifica"
+    VEICULOS ||--|{ DEFEITOS : "apresenta"
+    DEFEITOS ||--|| MANUTENCOES : "é corrigido por"
+    CATALOGO_DEFEITOS ||--|{ DEFEITOS : "classifica"
+    CATALOGO_ACOES ||--|{ MANUTENCOES : "define"
+    LOTS ||--|{ LOG_LOT : "tem histórico"
+    VEICULOS ||--|{ LOG_LOT : "registra evento em"
+    EMPRESAS ||--|{ LOG_LOT : "registra evento em"
+    MANUTENCOES ||--|{ LOG_LOT : "registra evento de"
+    CATALOGO_EVENTOS ||--|{ LOG_LOT : "tipifica"
