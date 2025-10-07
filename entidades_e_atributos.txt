@@ -1,0 +1,90 @@
+Entidades e Atributos
+*neste caso, todo pk(identificador) é um numero automaticamente gerado pelo sistema
+
+- USUARIOS
+	pk - id_usuario not null
+	nome_completo -> VARCHAR(200) not null
+	email_usuario -> VARCHAR(200) not null
+	senha_hash -> VARCHAR2 not null
+	fk - id_empresa not null (TODO USUARIO PERTENCE A UMA EMPRESA)
+	
+- EMPRESAS
+	pk - id_empresa not null
+	nome_fantasia -> VARCHAR(200) not null
+	endereco -> VARCHAR(200) not null
+	
+- CONTATOS
+	pk - id_contato not null
+	nome_contato -> VARCHAR(200) not null
+	email_contato -> VARCHAR(200)
+	telefone -> VARCHAR(20)
+	((((validação = todo contato deve ter um email E/OU um telefone -> restrição CHECK na tabela CONTATOS))))
+	
+- EMPRESA_CONTATOS (onde a empresa acessa seu seus contatos, e vice versa)
+	pfk - id_empresa not null
+	pfk - id_contato not null
+
+- VEICULOS
+	pk - id_veiculo not null
+	placa -> VARCHAR(7) not null
+	frota -> VARCHAR(15)
+	fk - id_empresa not null
+	
+- TECNICOS
+	pk - id_tecnico not null
+	local -> VARCHAR(200) not null
+	fk - id_contato not null
+	
+- TECNICOS_EMPRESAS (da ao tecnico possibilidade de atender a mais de uma empresa)
+	fk - id_tecnico not null
+	fk - id_empresa not null
+	
+- VISITAS_TECNICAS
+	pk - id_visita not null
+	fk - id_tecnico not null
+	data_visita -> DATE not null
+	
+- LOTS(dispositivos)
+	pk - id_lot not null
+	codigo_lot -> VARCHAR(7) not null
+	obs_lot -> VARCHAR(255)
+	
+- CATALOGO_DEFEITOS
+	pk - id_catalogo_defeito not null
+	codigo_defeito -> VARCHAR(20) not null
+	descricao_defeito -> VARCHAR(255)
+	
+- CATALOGO_ACOES
+	pk - id_catalogo_acao not null
+	codigo_acao -> VARCHAR(20) not null
+	descricao_acao -> VARCHAR(255)
+	
+- DEFEITOS
+	pk - id_defeito not null
+	fk - id_catalogo_defeito not null
+	fk - id_veiculo not null
+	data_reporte -> DATE not null
+	status_defeito -> VARCHAR(15) not null
+	obs_defeitos -> CLOB
+	
+- MANUTENCOES
+	pk - id_manutencao not null
+	fk - id_visita not null
+	fk - id_catalogo_acao not null
+	fk - id_defeito not null
+	obs_servico -> CLOB
+	
+- LOG_LOT
+	pk - id_log not null
+	fk - id_lot not null
+	fk - id_veiculo not null
+	fk - id_empresa not null
+	fk - id_manutencao not null
+	fk - id_catalogo_eventos not null
+	data_evento -> DATE not null
+	obs_evento -> CLOB
+	responsavel_evento -> VARCHAR(100) not null
+	
+- CATALOGO_EVENTOS
+	pk - id_catalogo_eventos not null
+	codigo_evento -> VARCHAR(50) not null
