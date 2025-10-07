@@ -1,0 +1,37 @@
+USUARIOS
+  (Tabela independente para autenticação)
+
+EMPRESAS
+    (1) → (N) VEICULOS
+    (1) → (N) EMPRESA_CONTATOS (muitos-para-muitos com CONTATOS)
+    (0) → (N) TECNICOS_EMPRESAS (muitos-para-muitos com TECNICOS)
+    (1) → (N) LOG_LOT
+
+CONTATOS
+    (1) → (1) TECNICOS
+    (1) → (N) EMPRESA_CONTATOS (muitos-para-muitos com EMPRESAS)
+
+TECNICOS
+    (0) → (N) VISITAS_TECNICAS
+    (1) → (N) TECNICOS_EMPRESAS (muitos-para-muitos com EMPRESAS)
+
+VEICULOS
+    (0) → (N) DEFEITOS
+    (1) → (N) LOG_LOT
+
+VISITAS_TECNICAS
+    (1) → (N) MANUTENCOES
+
+DEFEITOS
+    (1) → (1) MANUTENCOES
+
+LOTS
+    (1) → (N) LOG_LOT
+
+MANUTENCOES
+    (1) → (N) LOG_LOT
+
+CATÁLOGOS
+    CATALOGO_DEFEITOS (1) → (N) DEFEITOS
+    CATALOGO_ACOES (1) → (N) MANUTENCOES
+    CATALOGO_EVENTOS (1) → (N) LOG_LOT
