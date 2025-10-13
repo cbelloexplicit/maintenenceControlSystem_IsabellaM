@@ -1,0 +1,21 @@
+controller_usuario:
+  inserir
+  remover
+  atualizar
+  listar
+  validar
+controller_empresa:
+  inserir
+  remover
+  listar
+  atualizar
+controller_contato:
+  inserir
+  listar
+  atualizar
+  remover
+controller_veiculo
+  inserir
+  listar
+  atualizar
+  remover
