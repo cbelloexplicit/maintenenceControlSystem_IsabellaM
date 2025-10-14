@@ -32,6 +32,7 @@ Entidades e Atributos
 - TECNICOS
 	pk - id_tecnico not null
 	local -> VARCHAR(200) not null
+	status -> VARCHAR2(8) not null  -- NOVA COLUNA
 	fk - id_contato not null
 	
 - TECNICOS_EMPRESAS (da ao tecnico possibilidade de atender a mais de uma empresa)

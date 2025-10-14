@@ -31,7 +31,7 @@ class OracleDB:
             self.connection.close()
             print("Conexão com o Oracle DB fechada.")
 
-    def execute_query(self, query: str, params: dict = None):
+    def execute_write_query(self, query: str, params: dict = None):
         """Executa uma query no banco de dados (para INSERT, UPDATE, DELETE)."""
         try:
             # Garantir conexão

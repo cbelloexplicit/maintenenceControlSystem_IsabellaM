@@ -1,48 +1,58 @@
-Controller_Dashboard
+Controller_Dashboard                                | OK
     obter_contagem_registros()
-controller_usuario:
+
+controller_usuario:                                 | OK
   inserir
   remover
   atualizar
-  listar
+  listar todos
   validar
-  buscar_usuario_por_email(email: str)
-controller_empresa:
-  select empresa por nome
+  buscar por nome
+  buscar por email
+
+controller_empresa:                                 | OK
   inserir
   remover
-  listar empresas
+  atualizar
+  listar todos
+  buscar empresa por nome
   listar veículos em empresa
   listar contatos da empresa
   listar tecnicos em empresa
-  atualizar
-controller_contato:
+
+controller_contato:                                 | OK
   inserir
   buscar contato por nome
   listar
   atualizar
   remover
+
 controller_veiculo
   inserir
   listar
-  listar veículo por empresa
   buscar_lote_instalado(id_veiculo)
   buscar_veiculo_por_placa(placa: str)
   atualizar
   remover
+
 Controller_Tecnico
   inserir
   listar
   atualizar
+  inativar
+  ativar
   remover
   associar_tecnico_empresa
   desassociar_tecnico_empresa
+  buscar_tecnico_nome
+
 Controller_Lot
   inserir
   buscar_lote_por_codigo(codigo_lot: str)
   listar
   atualizar
   remover
+
 Controller_VisitaTecnica
   buscar visita por data
   buscar visita por tecnico
@@ -55,6 +65,7 @@ Controller_VisitaTecnica
   listar tudo
   atualizar
   remover
+
 Controller_Defeito
   inserir
   listar veículos com defeito X
@@ -62,16 +73,19 @@ Controller_Defeito
   relatorio_contagem_defeitos_por_empresa
   atualizar
   remover defeito em veículo
+
 Controle_manutencao
   inserir
   listar manutencao em empresa
   listar manutencao em veículo
   atualizar
   remover
+
 Controller_LogLot
   buscar log por lot
   Inserir_Log
   Listar_Log_por_Lot
+
 Catalogos
   Inserir
   Listar
