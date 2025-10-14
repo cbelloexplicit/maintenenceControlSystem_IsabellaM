@@ -1,4 +1,4 @@
-from model.Contato import Contato
+from src.model.contato import Contato
 
 class Tecnico:
     def __init__(self, id_tecnico:int, local:str, contato:Contato):

@@ -1,7 +1,7 @@
-from src.conexion.oracle_db import OracleDB
+from src.conexion.oracledb import OracleDB
 from src.model.usuario import Usuario
 
-class Controller_Usuario:
+class ControllerUsuario:
 
     def inserir_usuario(self, novo_usuario: Usuario) -> None:
         """
@@ -21,7 +21,7 @@ class Controller_Usuario:
                 'email': novo_usuario.get_email_usuario(),
                 'senha': novo_usuario.get_senha_hash()
             }
-            db.execute_write_query(query, params)
+            db.execute_query(query, params)
             print("Usuário inserido com sucesso!")
 
         except Exception as e:

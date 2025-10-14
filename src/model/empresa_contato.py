@@ -1,5 +1,5 @@
-from model.Empresa import Empresa
-from model.Contato import Contato
+from src.model.empresa import Empresa
+from src.model.contato import Contato
 
 class EmpresaContato:
     def __init__(self, empresa:Empresa, contato:Contato):

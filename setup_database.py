@@ -1,4 +1,4 @@
-from src.conexion.OracleDB import OracleDB
+from src.conexion.oracledb import OracleDB
 import os
 import re
 

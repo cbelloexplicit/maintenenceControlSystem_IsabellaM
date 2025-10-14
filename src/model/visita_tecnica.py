@@ -1,5 +1,5 @@
 from datetime import date
-from model.Tecnico import Tecnico
+from src.model.tecnico import Tecnico
 
 class VisitaTecnica:
     def __init__(self, id_visita:int, data_visita:date, tecnico:Tecnico):

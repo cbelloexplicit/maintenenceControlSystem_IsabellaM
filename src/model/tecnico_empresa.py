@@ -1,5 +1,5 @@
-from model.Tecnico import Tecnico
-from model.Empresa import Empresa
+from src.model.tecnico import Tecnico
+from src.model.empresa import Empresa
 
 class TecnicoEmpresa:
     def __init__(self, tecnico:Tecnico, empresa:Empresa):

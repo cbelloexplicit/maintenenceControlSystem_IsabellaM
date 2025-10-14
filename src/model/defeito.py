@@ -1,6 +1,6 @@
 from datetime import date
-from model.CatalogoDefeito import CatalogoDefeito
-from model.Veiculo import Veiculo
+from src.model.catalogo_defeito import CatalogoDefeitos
+from src.model.veiculo import Veiculo
 
 class Defeito:
     def __init__(self, id_defeito:int, data_reporte:date, status_defeito:str, obs_defeitos:str, catalogo_defeito:CatalogoDefeito, veiculo:Veiculo):
@@ -20,7 +20,7 @@ class Defeito:
         return self.__status_defeito
     def get_obs_defeitos(self) -> str: 
         return self.__obs_defeitos
-    def get_catalogo_defeito(self) -> CatalogoDefeito: 
+    def get_catalogo_defeito(self) -> CatalogoDefeitos:
         return self.__catalogo_defeito
     def get_veiculo(self) -> Veiculo: 
         return self.__veiculo
@@ -34,7 +34,7 @@ class Defeito:
         self.__status_defeito = status_defeito
     def set_obs_defeitos(self, obs_defeitos:str): 
         self.__obs_defeitos = obs_defeitos
-    def set_catalogo_defeito(self, catalogo_defeito:CatalogoDefeito): 
+    def set_catalogo_defeito(self, catalogo_defeito:CatalogoDefeitos):
         self.__catalogo_defeito = catalogo_defeito
     def set_veiculo(self, veiculo:Veiculo): 
         self.__veiculo = veiculo

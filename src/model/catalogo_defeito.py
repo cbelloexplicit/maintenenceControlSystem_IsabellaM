@@ -1,4 +1,4 @@
-class CatalogoDefeito:
+class CatalogoDefeitos:
     def __init__(self, id_catalogo_defeito:int, codigo_defeito:str, descricao_defeito:str = None):
         self.__id_catalogo_defeito = id_catalogo_defeito
         self.__codigo_defeito = codigo_defeito

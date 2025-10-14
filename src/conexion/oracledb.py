@@ -23,7 +23,7 @@ class OracleDB:
             print(f"Erro ao conectar ao Oracle: {e}")
             return False
 
-    def disconnect(self):
+    def close(self):
         """Fecha a conexão com o banco de dados."""
         if self.cursor:
             self.cursor.close()
@@ -41,7 +41,7 @@ class OracleDB:
             #Executa query
             self.cursor.execute(query, params or {})
             self.connection.commit()
-            print("Query executada e comitada com sucesso.")
+            print("Query executada com sucesso.")
         except oracledb.DatabaseError as e:
             print(f"Erro ao executar a query: {e}")
             if self.connection:

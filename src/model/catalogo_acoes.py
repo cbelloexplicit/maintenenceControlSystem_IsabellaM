@@ -1,4 +1,4 @@
-class CatalogoAcao:
+class CatalogoAcoes:
     def __init__(self, id_catalogo_acao:int, codigo_acao:str, descricao_acao:str = None):
         self.__id_catalogo_acao = id_catalogo_acao
         self.__codigo_acao = codigo_acao

@@ -1,13 +1,13 @@
 from datetime import date
-from model.Lot import Lot
-from model.Veiculo import Veiculo
-from model.Empresa import Empresa
-from model.Manutencao import Manutencao
-from model.CatalogoEvento import CatalogoEvento
+from src.model.lot import Lot
+from src.model.veiculo import Veiculo
+from src.model.empresa import Empresa
+from src.model.manutencao import Manutencao
+from src.model.catalogo_eventos import CatalogoEventos
 
 class LogLot:
     def __init__(self, id_log:int, data_evento:date, responsavel_evento:str, obs_evento:str, 
-                 lot:Lot, catalogo_eventos:CatalogoEvento, veiculo:Veiculo = None, 
+                 lot:Lot, catalogo_eventos:CatalogoEventos, veiculo:Veiculo = None,
                  empresa:Empresa = None, manutencao:Manutencao = None):
         self.__id_log = id_log
         self.__data_evento = data_evento
@@ -28,7 +28,7 @@ class LogLot:
     def get_veiculo(self) -> Veiculo: return self.__veiculo
     def get_empresa(self) -> Empresa: return self.__empresa
     def get_manutencao(self) -> Manutencao: return self.__manutencao
-    def get_catalogo_eventos(self) -> CatalogoEvento: return self.__catalogo_eventos
+    def get_catalogo_eventos(self) -> CatalogoEventos: return self.__catalogo_eventos
 
     # Setters
     def set_id_log(self, id_log:int): self.__id_log = id_log
@@ -39,7 +39,7 @@ class LogLot:
     def set_veiculo(self, veiculo:Veiculo): self.__veiculo = veiculo
     def set_empresa(self, empresa:Empresa): self.__empresa = empresa
     def set_manutencao(self, manutencao:Manutencao): self.__manutencao = manutencao
-    def set_catalogo_eventos(self, catalogo_eventos:CatalogoEvento): self.__catalogo_eventos = catalogo_eventos
+    def set_catalogo_eventos(self, catalogo_eventos:CatalogoEventos): self.__catalogo_eventos = catalogo_eventos
 
     # To String
     def to_string(self) -> str:

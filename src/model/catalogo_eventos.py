@@ -1,4 +1,4 @@
-class CatalogoEvento:
+class CatalogoEventos:
     def __init__(self, id_catalogo_eventos:int, codigo_evento:str):
         self.__id_catalogo_eventos = id_catalogo_eventos
         self.__codigo_evento = codigo_evento

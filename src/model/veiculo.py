@@ -1,4 +1,4 @@
-from model.Empresa import Empresa
+from src.model.empresa import Empresa
 
 class Veiculo:
     def __init__(self, id_veiculo:int, placa:str, frota:str, empresa:Empresa):
