@@ -1,0 +1,117 @@
+Eventos
+    Evento 1:
+        Código do Evento: Instalação
+    Evento 2:
+        Código do Evento: Desinstalação
+    Evento 3:
+        Código do Evento: Transferência (Unidade)
+    Evento 4:
+        Código do Evento: Envio para sede
+    Evento 5:
+        Código do Evento: Envio para transportadora
+    Evento 6:
+        Código do Evento: Manutenção na sede
+    Evento 7:
+        Código do Evento: Aguardando envio para sede
+    Evento 8:
+        Código do Evento: inoperante
+Acoes
+    Ação 1:
+        Código da Ação: Instalação
+        Descrição da Ação: Instalação de novo LOT em veículo
+    Ação 2:
+        Código da Ação: Desinstalação
+        Descrição da Ação: Desinstalação do módulo em veículo
+    Ação 3:
+        Código da Ação: Troca
+        Descrição da Ação: Troca de LOT em veículo
+    Ação 4:
+        Código da Ação: Manutenção Simples
+        Descrição da Ação: Manutenção e ajuste
+    Ação 5:
+        Código da Ação: Calibração
+        Descrição da Ação: Calibração de câmeras e reposicionamento
+    Ação 6:
+        Código da Ação: Transferencia
+        Descrição da Ação: Transferência de equipamento de veículo A <-> B
+    Ação 7:
+        Código da Ação: Outros
+        Descrição da Ação: Especificar em comentários
+Defeitos
+    Defeito 1:
+        Código do defeito: Dispositivo sem comunicação
+        Descrição do defeito: Troca prioritária
+    Defeito 2:
+        Código do defeito: Falha em Câmera
+        Descrição do defeito: Mau contato no cabo flat externo
+    Defeito 3:
+        Código do defeito: Falha de IR
+        Descrição do defeito: -
+    Defeito 4:
+        Código do defeito: Câmera interna sem comunicar
+        Descrição do defeito: -
+Empresas
+    Empresa 1:
+        Nome Fantasia: LogTrans Cargas Rápidas
+        Endereço: Rodovia do Contorno, 100, Cariacica/ES
+    Empresa 2:
+        Nome Fantasia: Serra Solutions Tech
+        Endereço: Av. Civit, 1295, Serra/ES
+    Empresa 3:
+        Nome Fantasia: Vila Velha Transportes
+        Endereço: Av. da Praia, 500, Vila Velha/ES
+Contatos
+    Contato 1:
+        Nome: Carlos Andrade
+        E-mail: carlos.a@email.com
+        Telefone: 27999991111
+    Contato 2 (LogTrans)
+        Nome: Ana Beatriz Costa
+        E-mail: ana.b@email.com
+        Telefone: 27999992222
+    Contato 3:
+        Nome: Marcos Oliveira
+        E-mail: marcos.o@email.com
+        Telefone: 27999993333
+Técnicos (Baseados nos contatos)
+    Técnico 1:
+        Contato Associado: Carlos Andrade
+        Local de Atuação: Grande Vitória
+    Técnico 3:
+        Contato Associado: Marcos Oliveira
+        Local de Atuação: Região Serrana
+Veículos
+    (Associados às empresas acima)
+    Veículo 1:
+        Placa: BDD4E56
+        Frota: 0806
+        Empresa Associada: LogTrans Cargas Rápidas
+    Veículo 2:
+        Placa: ABC1D23
+        Frota: 10000
+        Empresa Associada: Serra Solutions Tech
+    Veículo 3:
+        Placa: QWE9F87
+        Frota: 250901
+        Empresa Associada: LogTrans Cargas Rápidas
+LOTs (Dispositivos)
+    Lote 1:
+        Código do Lote: LOT1001
+        Observação: Rastreador GPS Modelo A - Compra 2024
+    Lote 2:
+        Código do Lote: LOT2502
+        Observação: Rastreador GPS Modelo A - Compra 2024
+    Lote 3:
+        Código do Lote: LOT1233
+        Observação: Rastreador GPS Modelo B - Compra 2025
+Usuários
+    (Todos com a senha 'senha123' para facilitar os testes)
+    Usuário 1:
+        Nome Completo: Administrador Padrão
+        E-mail (Login): admin@sistema.com
+    Usuário 2:
+        Nome Completo: Isabella M.
+        E-mail (Login): isabella.m@sistema.com
+    Usuário 3:
+        Nome Completo: Usuário de Teste
+        E-mail (Login): teste@sistema.com

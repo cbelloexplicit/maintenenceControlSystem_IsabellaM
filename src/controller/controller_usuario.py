@@ -10,11 +10,6 @@ class ControllerUsuario:
         pass
 
     def inserir_usuario(self, novo_usuario: Usuario) -> bool:
-        """ Insere um novo usuário no banco de dados. """
-        if self.buscar_usuario_por_email(novo_usuario.get_email_usuario()):
-            print(f"Erro ao inserir: O e-mail '{novo_usuario.get_email_usuario()}' já está cadastrado.")
-            return False
-
         db = OracleDB()
         try:
             db.connect()
