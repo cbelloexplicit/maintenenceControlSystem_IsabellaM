@@ -27,7 +27,7 @@ controller_contato:                                 | OK
   atualizar
   remover
 
-controller_veiculo
+controller_veiculo                                  | OK
   inserir
   listar
   buscar_lote_instalado(id_veiculo)
@@ -35,7 +35,7 @@ controller_veiculo
   atualizar
   remover
 
-Controller_Tecnico
+Controller_Tecnico                                  | OK
   inserir
   listar
   atualizar
@@ -46,14 +46,14 @@ Controller_Tecnico
   desassociar_tecnico_empresa
   buscar_tecnico_nome
 
-Controller_Lot
+Controller_Lot                                      | OK
   inserir
   buscar_lote_por_codigo(codigo_lot: str)
   listar
   atualizar
   remover
 
-Controller_VisitaTecnica
+Controller_VisitaTecnica                            | OK
   buscar visita por data
   buscar visita por tecnico
   buscar visita por empresa
@@ -66,7 +66,7 @@ Controller_VisitaTecnica
   atualizar
   remover
 
-Controller_Defeito
+Controller_Defeito                                  | OK
   inserir
   listar veículos com defeito X
   listar defeitos em veículo
@@ -74,19 +74,20 @@ Controller_Defeito
   atualizar
   remover defeito em veículo
 
-Controle_manutencao
+Controle_manutencao                                 | OK
   inserir
   listar manutencao em empresa
   listar manutencao em veículo
   atualizar
   remover
 
-Controller_LogLot
+Controller_LogLot                                   | OK
   buscar log por lot
   Inserir_Log
   Listar_Log_por_Lot
 
 Catalogos
   Inserir
+  Buscar
   Listar
   Remover
