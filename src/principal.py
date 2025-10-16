@@ -342,54 +342,57 @@ def menu_gerar_relatorios(usuario_logado: Usuario):
 
             if empresa_selecionada:
                 id_empresa = empresa_selecionada.get_id_empresa()
-                nome_empresa = empresa_selecionada.get_contato().get_nome_empresa()
+                nome_empresa = empresa_selecionada.get_nome_fantasia()
 
-                atividades = relatorios_manager.get_relatorio_detalhado_empresa(id_empresa)
+                dados_relatorio = relatorios_manager.get_relatorio_detalhado_empresa(id_empresa)
 
                 ui_helper.limpar_tela()
                 ui_helper.exibir_cabecalho(f"RELATORIO {nome_empresa.upper()}")
 
-                if not atividades:
-                    print("Nenhuma informação encontrada nessa empresa.")
+                if not isinstance(dados_relatorio, dict) or not dados_relatorio:
+                    print("Nenhuma informação encontrada para esta empresa.")
                 else:
-                    for i, atividade in enumerate(atividades):
-                        # Seção 1: Defeitos Atuais
-                        print("\n--- DEFEITOS ATUAIS EM ABERTO ---")
-                        if dados_relatorio["defeitos_atuais"]:
-                            for defeito in dados_relatorio["defeitos_atuais"]:
-                                data_formatada = defeito['data_reporte'].strftime('%d/%m/%Y') if defeito[
-                                    'data_reporte'] else 'N/A'
-                                print(
-                                    f"  - Veículo: {defeito['placa']} | Reportado em: {data_formatada} | Defeito: {defeito['descricao']}")
-                        else:
-                            print("  Nenhum defeito em aberto para os veículos desta empresa.")
+                    if not dados_relatorio:
+                        print("Nenhuma informação encontrada nessa empresa.")
+                    else:
+                        for i, dados_relatorio in enumerate(dados_relatorio):
+                            # Seção 1: Defeitos Atuais
+                            print("\n--- DEFEITOS ATUAIS EM ABERTO ---")
+                            if dados_relatorio['defeitos_atuais']:
+                                for defeito in dados_relatorio['defeitos_atuais']:
+                                    data_formatada = defeito['data_reporte'].strftime('%d/%m/%Y') if defeito[
+                                        'data_reporte'] else 'N/A'
+                                    print(
+                                        f"  - Veículo: {defeito['placa']} | Reportado em: {data_formatada} | Defeito: {defeito['descricao']}")
+                            else:
+                                print("  Nenhum defeito em aberto para os veículos desta empresa.")
 
-                        # Seção 2: Veículos da Frota
-                        print("\n--- VEÍCULOS DA FROTA ---")
-                        if dados_relatorio["veiculos"]:
-                            for veiculo in dados_relatorio["veiculos"]:
-                                print(f"  - Placa: {veiculo['placa']}, Frota: {veiculo['frota']}")
-                        else:
-                            print("  Nenhum veículo cadastrado.")
+                            # Seção 2: Veículos da Frota
+                            print("\n--- VEÍCULOS DA FROTA ---")
+                            if dados_relatorio["veiculos"]:
+                                for veiculo in dados_relatorio["veiculos"]:
+                                    print(f"  - Placa: {veiculo['placa']}, Frota: {veiculo['frota']}")
+                            else:
+                                print("  Nenhum veículo cadastrado.")
 
-                        # Seção 3: Técnicos Associados
-                        print("\n--- TÉCNICOS ASSOCIADOS ---")
-                        if dados_relatorio["tecnicos"]:
-                            for tecnico in dados_relatorio["tecnicos"]:
-                                print(f"  - Nome: {tecnico['nome']}, Local: {tecnico['local']}")
-                        else:
-                            print("  Nenhum técnico associado.")
+                            # Seção 3: Técnicos Associados
+                            print("\n--- TÉCNICOS ASSOCIADOS ---")
+                            if dados_relatorio["tecnicos"]:
+                                for tecnico in dados_relatorio["tecnicos"]:
+                                    print(f"  - Nome: {tecnico['nome']}, Local: {tecnico['local']}")
+                            else:
+                                print("  Nenhum técnico associado.")
 
-                        # Seção 4: Histórico de Manutenções
-                        print("\n--- HISTÓRICO DE MANUTENÇÕES REALIZADAS ---")
-                        if dados_relatorio["manutencoes"]:
-                            for manutencao in dados_relatorio["manutencoes"]:
-                                data_formatada = manutencao['data'].strftime('%d/%m/%Y') if manutencao[
-                                    'data'] else 'N/A'
-                                print(
-                                    f"  - Data: {data_formatada}, Veículo: {manutencao['placa']}, Defeito: {manutencao['defeito']}, Técnico: {manutencao['tecnico']}")
-                        else:
-                            print("  Nenhum registro de manutenção encontrado.")
+                            # Seção 4: Histórico de Manutenções
+                            print("\n--- HISTÓRICO DE MANUTENÇÕES REALIZADAS ---")
+                            if dados_relatorio["manutencoes"]:
+                                for manutencao in dados_relatorio["manutencoes"]:
+                                    data_formatada = manutencao['data'].strftime('%d/%m/%Y') if manutencao[
+                                        'data'] else 'N/A'
+                                    print(
+                                        f"  - Data: {data_formatada}, Veículo: {manutencao['placa']}, Defeito: {manutencao['defeito']}, Técnico: {manutencao['tecnico']}")
+                            else:
+                                print("  Nenhum registro de manutenção encontrado.")
             input("\nPressione Enter para voltar...")
 
         #voltar
