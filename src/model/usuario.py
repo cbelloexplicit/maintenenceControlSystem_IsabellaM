@@ -1,9 +1,9 @@
 class Usuario:   
-    def __init__(self, id_usuario:int, nome_completo:str, email_usuario:str, senha_hash:str):
+    def __init__(self, id_usuario:int, nome_completo:str, email_usuario:str, senha:str):
         self.__id_usuario = id_usuario
         self.__nome_completo = nome_completo
         self.__email_usuario = email_usuario
-        self.__senha_hash = senha_hash
+        self.__senha = senha
 
     # Getters
     def get_id_usuario(self) -> int: 
@@ -12,8 +12,8 @@ class Usuario:
         return self.__nome_completo
     def get_email_usuario(self) -> str: 
         return self.__email_usuario
-    def get_senha_hash(self) -> str: 
-        return self.__senha_hash
+    def get_senha(self) -> str:
+        return self.__senha
 
     # Setters
     def set_id_usuario(self, id_usuario:int): 
@@ -22,8 +22,8 @@ class Usuario:
         self.__nome_completo = nome_completo
     def set_email_usuario(self, email_usuario:str): 
         self.__email_usuario = email_usuario
-    def set_senha_hash(self, senha_hash:str): 
-        self.__senha_hash = senha_hash
+    def set_senha(self, senha:str):
+        self.__senha = senha
 
     # To String
     def to_string(self) -> str:

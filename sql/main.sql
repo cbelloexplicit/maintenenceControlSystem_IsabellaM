@@ -35,7 +35,7 @@ CREATE TABLE USUARIOS (
     id_usuario NUMBER NOT NULL,
     nome_completo VARCHAR2(200) NOT NULL,
     email_usuario VARCHAR2(200) NOT NULL,
-    senha_hash VARCHAR2(255) NOT NULL,
+    senha VARCHAR2(255) NOT NULL,
     CONSTRAINT PK_USUARIOS PRIMARY KEY (id_usuario),
     CONSTRAINT UK_USUARIOS_EMAIL UNIQUE (email_usuario)
 );
@@ -84,14 +84,14 @@ CREATE TABLE LOTS (
 
 CREATE TABLE CATALOGO_DEFEITOS (
     id_catalogo_defeito NUMBER NOT NULL,
-    codigo_defeito VARCHAR2(20) NOT NULL,
+    codigo_defeito VARCHAR2(50) NOT NULL,
     descricao_defeito VARCHAR2(255),
     CONSTRAINT PK_CATALOGO_DEFEITOS PRIMARY KEY (id_catalogo_defeito)
 );
 
 CREATE TABLE CATALOGO_ACOES (
     id_catalogo_acao NUMBER NOT NULL,
-    codigo_acao VARCHAR2(20) NOT NULL,
+    codigo_acao VARCHAR2(50) NOT NULL,
     descricao_acao VARCHAR2(255),
     CONSTRAINT PK_CATALOGO_ACOES PRIMARY KEY (id_catalogo_acao)
 );
@@ -127,7 +127,7 @@ CREATE TABLE DEFEITOS (
     id_catalogo_defeito NUMBER NOT NULL,
     id_veiculo NUMBER NOT NULL,
     data_reporte DATE NOT NULL,
-    status_defeito VARCHAR2(15) NOT NULL,
+    status_defeito VARCHAR2(50) DEFAULT 'ATIVO' NOT NULL,
     obs_defeitos CLOB,
     CONSTRAINT PK_DEFEITOS PRIMARY KEY (id_defeito)
 );

@@ -9,7 +9,8 @@ def limpar_tela():
 
 def selecionar_entidade(lista_entidades: list, prompt_singular: str) -> any:
     """
-    Função genérica para exibir uma lista de objetos, permitir que o usuário escolha um e retornar o objeto selecionado.
+    Função genérica para exibir uma lista de objetos, permitir que o usuário escolha um,
+    pedir confirmação e retornar o objeto selecionado.
     """
     if not lista_entidades:
         print(f"\nNenhum(a) {prompt_singular} encontrado(a).")
@@ -17,25 +18,34 @@ def selecionar_entidade(lista_entidades: list, prompt_singular: str) -> any:
 
     print(f"\n{prompt_singular.capitalize()}s encontrados:")
     for i, entidade in enumerate(lista_entidades):
+        # Exibe a lista numerada
         print(f"  {i + 1} - {entidade.to_string()}")
 
     while True:
         try:
-            escolha = int(input(f"\nDigite o número do(a) {prompt_singular} desejado(a) (ou 0 para cancelar): "))
+            escolha_num = int(input(
+                f"\nDigite o NÚMERO DA LISTA correspondente ao(à) {prompt_singular} desejado(a) (ou 0 para cancelar): "))
 
-            if escolha == 0:
+            if escolha_num == 0:
                 print("Operação cancelada.")
                 return None
 
-            if 1 <= escolha <= len(lista_entidades):
-                # Retorna o objeto inteiro que foi escolhido
-                return lista_entidades[escolha - 1]
+            if 1 <= escolha_num <= len(lista_entidades):
+                # Pega o objeto escolhido da lista
+                entidade_selecionada = lista_entidades[escolha_num - 1]
+
+                print("\nVocê selecionou:")
+                print(f"  -> {entidade_selecionada.to_string()}")
+
+                if pedir_confirmacao(f"confirmar a seleção deste(a) {prompt_singular}"):
+                    return entidade_selecionada
+                else:
+                    print("Seleção não confirmada. Por favor, escolha novamente.")
             else:
                 print("Número inválido. Por favor, escolha um número da lista.")
 
         except ValueError:
             print("Entrada inválida. Por favor, digite apenas o número.")
-
 
 def pedir_confirmacao(acao: str) -> bool:
     """
@@ -53,6 +63,6 @@ def exibir_cabecalho(titulo: str):
     """
     Exibe um cabeçalho formatado para os menus.
     """
-    print("\n" + "=" * 30)
+    print("\n" + "=" * 40)
     print(f"  {titulo.upper()}")
-    print("=" * 30)
+    print("=" * 40)

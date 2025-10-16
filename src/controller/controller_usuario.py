@@ -2,8 +2,6 @@
 
 from src.conexion.oracledb import OracleDB
 from src.model.usuario import Usuario
-import hashlib
-
 
 class ControllerUsuario:
     def __init__(self):
@@ -14,13 +12,13 @@ class ControllerUsuario:
         try:
             db.connect()
             query = """
-                    INSERT INTO usuarios (id_usuario, nome_completo, email_usuario, senha_hash) 
+                    INSERT INTO usuarios (id_usuario, nome_completo, email_usuario, senha) 
                     VALUES (seq_usuarios.nextval, :nome, :email, :senha)
                     """
             params = {
                 'nome': novo_usuario.get_nome_completo(),
                 'email': novo_usuario.get_email_usuario(),
-                'senha': novo_usuario.get_senha_hash()
+                'senha': novo_usuario.get_senha()
             }
             db.execute_write_query(query, params)
             print("Usuário inserido com sucesso!")
@@ -56,13 +54,13 @@ class ControllerUsuario:
             db.connect()
             query = """
                     UPDATE usuarios
-                    SET nome_completo = :nome, email_usuario = :email, senha_hash = :senha_hash
+                    SET nome_completo = :nome, email_usuario = :email, senha = :senha
                     WHERE id_usuario = :id_usuario
                     """
             params = {
                 'nome': usuario_atualizado.get_nome_completo(),
                 'email': usuario_atualizado.get_email_usuario(),
-                'senha_hash': usuario_atualizado.get_senha_hash(),
+                'senha': usuario_atualizado.get_senha(),
                 'id_usuario': usuario_atualizado.get_id_usuario()
             }
             db.execute_write_query(query, params)
@@ -81,12 +79,12 @@ class ControllerUsuario:
         lista_de_usuarios = []
         try:
             db.connect()
-            query = "SELECT id_usuario, nome_completo, email_usuario, senha_hash FROM usuarios ORDER BY nome_completo"
+            query = "SELECT id_usuario, nome_completo, email_usuario, senha FROM usuarios ORDER BY nome_completo"
             resultado_bruto = db.execute_select(query)
             if resultado_bruto:
                 for linha in resultado_bruto:
                     usuario = Usuario(id_usuario=linha[0], nome_completo=linha[1], email_usuario=linha[2],
-                                      senha_hash=linha[3])
+                                      senha=linha[3])
                     lista_de_usuarios.append(usuario)
             return lista_de_usuarios
         except Exception as e:
@@ -103,7 +101,7 @@ class ControllerUsuario:
         try:
             db.connect()
             query = """
-                    SELECT id_usuario, nome_completo, email_usuario, senha_hash FROM usuarios 
+                    SELECT id_usuario, nome_completo, email_usuario, senha FROM usuarios 
                     WHERE UPPER(nome_completo) LIKE UPPER(:nome_param)
                     ORDER BY nome_completo
                     """
@@ -112,7 +110,7 @@ class ControllerUsuario:
             if resultado:
                 for linha in resultado:
                     usuario = Usuario(id_usuario=linha[0], nome_completo=linha[1], email_usuario=linha[2],
-                                      senha_hash=linha[3])
+                                      senha=linha[3])
                     lista_de_usuarios.append(usuario)
             return lista_de_usuarios
         except Exception as e:
@@ -123,18 +121,23 @@ class ControllerUsuario:
                 db.close()
 
     def validar_login(self, email: str, senha: str) -> Usuario | None:
-        """ Valida as credenciais de um usuário para login (case-insensitive). """
+        """
+        Valida as credenciais de um usuário para login (case-insensitive para o e-mail).
+        COMPARA A SENHA EM TEXTO PURO - APENAS PARA DESENVOLVIMENTO.
+        """
+        # 1. Busca o usuário pelo e-mail
         usuario_encontrado = self.buscar_usuario_por_email(email)
 
+        # 2. Verifica se o usuário foi encontrado
         if not usuario_encontrado:
             print(f"Login falhou: E-mail '{email}' não encontrado.")
             return None
 
-        senha_hash_armazenada = usuario_encontrado.get_senha_hash()
-        senha_fornecida_hash = hashlib.sha256(senha.encode()).hexdigest()
+        # 3. Pega a senha em texto puro que está armazenada no banco
+        senha_armazenada = usuario_encontrado.get_senha()
 
-        if senha_fornecida_hash == senha_hash_armazenada:
-            print("Login bem-sucedido!")
+        # 4. Compara diretamente a senha fornecida com a senha armazenada
+        if senha == senha_armazenada:
             return usuario_encontrado
         else:
             print("Login falhou: Senha incorreta.")
@@ -146,7 +149,7 @@ class ControllerUsuario:
         try:
             db.connect()
             query = """
-                    SELECT id_usuario, nome_completo, email_usuario, senha_hash 
+                    SELECT id_usuario, nome_completo, email_usuario, senha 
                     FROM usuarios 
                     WHERE UPPER(email_usuario) = UPPER(:email_param)
                     """
@@ -156,7 +159,7 @@ class ControllerUsuario:
             if resultado:
                 linha = resultado[0]
                 usuario_encontrado = Usuario(id_usuario=linha[0], nome_completo=linha[1], email_usuario=linha[2],
-                                             senha_hash=linha[3])
+                                             senha=linha[3])
                 return usuario_encontrado
             return None
         except Exception as e:

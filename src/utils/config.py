@@ -200,12 +200,13 @@ MENU_CATALOGO_X ="""
 """
 
 MENU_GERAR_RELATORIOS = """
-===================================
-=      GERÊNCIA DE ENTIDADES      =
-===================================
-= 1 - Visitas por Técnico         =
-= 2 - Visitas por Empresa         =
-= 3 - Defeitos por Empresa        =
-= 0 - Voltar                      =
-===================================
+====================================
+=      GERADOR DE RELATORIOS       =
+====================================
+= 1 - Visitas por Técnico          =
+= 2 - Manutencoes                  =
+= 3 - Defeitos                     =
+= 4 - Detalhes em uma Empresa X    =
+= 0 - Voltar                       =
+====================================
 """

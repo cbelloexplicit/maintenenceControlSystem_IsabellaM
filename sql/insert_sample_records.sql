@@ -40,16 +40,17 @@ INSERT INTO LOTS (id_lot, codigo_lot, obs_lot) VALUES (SEQ_LOTS.NEXTVAL, 'LOT123
 INSERT INTO LOTS (id_lot, codigo_lot) VALUES (SEQ_LOTS.NEXTVAL, 'LOT1901');
 
 -- Inserir usuario (com senha criptografada e ponto e vírgula)
--- O HASH abaixo corresponde à senha 'senha123'
-INSERT INTO USUARIOS (id_usuario, nome_completo, email_usuario, senha_hash) VALUES (SEQ_USUARIOS.NEXTVAL, 'Administrador Padrão','admin@sistema.com','a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3');
-INSERT INTO USUARIOS (id_usuario, nome_completo, email_usuario, senha_hash) VALUES (SEQ_USUARIOS.NEXTVAL, 'Isabella M.','isabella.m@sistema.com','a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3');
-INSERT INTO USUARIOS (id_usuario, nome_completo, email_usuario, senha_hash) VALUES (SEQ_USUARIOS.NEXTVAL, 'Usuário de Teste','teste@sistema.com','a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3');
+INSERT INTO USUARIOS (id_usuario, nome_completo, email_usuario, senha) VALUES (SEQ_USUARIOS.NEXTVAL, 'Administrador Padrão','admin@sistema.com','senha123');
+INSERT INTO USUARIOS (id_usuario, nome_completo, email_usuario, senha) VALUES (SEQ_USUARIOS.NEXTVAL, 'Isabella M.','isabella.m@sistema.com','senha123');
+INSERT INTO USUARIOS (id_usuario, nome_completo, email_usuario, senha) VALUES (SEQ_USUARIOS.NEXTVAL, 'Usuário de Teste','teste@sistema.com','senha123');
 
-COMMIT;
+-- ligar contato a tecnico
+INSERT INTO TECNICOS (id_tecnico, local, id_contato) VALUES (SEQ_TECNICOS.NEXTVAL, 'Grande Vitória', 1);
+INSERT INTO TECNICOS (id_tecnico, local, id_contato) VALUES (SEQ_TECNICOS.NEXTVAL, 'Região Serrana', 3);
 
--- Inserir usuario
-INSERT INTO USUARIOS (id_usuario, nome_completo, email_usuario, senha_hash) VALUES (SEQ_USUARIOS.NEXTVAL, 'Administrador Padrão','admin@sistema.com','a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3');
-INSERT INTO USUARIOS (id_usuario, nome_completo, email_usuario, senha_hash) VALUES (SEQ_USUARIOS.NEXTVAL, 'Isabella M.','isabella.m@sistema.com','a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3');
-INSERT INTO USUARIOS (id_usuario, nome_completo, email_usuario, senha_hash) VALUES (SEQ_USUARIOS.NEXTVAL, 'Usuário de Teste','teste@sistema.com','a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3');
+-- inserir veiculo (Assumindo que os IDs das empresas serão 1, 2, 3)
+INSERT INTO VEICULOS (id_veiculo, placa, frota, id_empresa) VALUES (SEQ_VEICULOS.NEXTVAL, 'RDM4E56', '0806', 1);
+INSERT INTO VEICULOS (id_veiculo, placa, frota, id_empresa) VALUES (SEQ_VEICULOS.NEXTVAL, 'ABC1D23', '10000', 2);
+INSERT INTO VEICULOS (id_veiculo, placa, frota, id_empresa) VALUES (SEQ_VEICULOS.NEXTVAL, 'QWE9F87', '250901', 1);
 
 COMMIT;

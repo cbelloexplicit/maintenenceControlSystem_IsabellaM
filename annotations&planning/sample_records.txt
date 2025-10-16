@@ -83,7 +83,7 @@ Técnicos (Baseados nos contatos)
 Veículos
     (Associados às empresas acima)
     Veículo 1:
-        Placa: BDD4E56
+        Placa: RDM4E56
         Frota: 0806
         Empresa Associada: LogTrans Cargas Rápidas
     Veículo 2:

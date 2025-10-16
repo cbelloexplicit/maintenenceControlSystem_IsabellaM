@@ -1,11 +1,11 @@
 Entidades e Atributos
-*neste caso, todo pk(identificador) é um numero automaticamente gerado pelo sistema
+*neste caso, pk(identificador) é um numero automaticamente gerado pelo sistema
 
-- USUARIOS (TODO USUARIO É ADMINISTRADOR)
+- USUARIOS (USUARIO É ADMINISTRADOR)
     pk - id_usuario not null
     nome_completo -> VARCHAR(200) not null
     email_usuario -> VARCHAR(200) not null
-    senha_hash -> VARCHAR2 not null
+    senha -> VARCHAR2 not null
 	
 - EMPRESAS
 	pk - id_empresa not null
@@ -17,7 +17,7 @@ Entidades e Atributos
 	nome_contato -> VARCHAR(200) not null
 	email_contato -> VARCHAR(200)
 	telefone -> VARCHAR(20)
-	((((validação = todo contato deve ter um email E/OU um telefone -> restrição CHECK na tabela CONTATOS))))
+	((((validação = contato deve ter um email E/OU um telefone -> restrição CHECK na tabela CONTATOS))))
 	
 - EMPRESA_CONTATOS (onde a empresa acessa seu seus contatos, e vice versa)
 	pfk - id_empresa not null
@@ -28,11 +28,13 @@ Entidades e Atributos
 	placa -> VARCHAR(7) not null
 	frota -> VARCHAR(15)
 	fk - id_empresa not null
+	status -> VARCHAR2(8) not null
+
 	
 - TECNICOS
 	pk - id_tecnico not null
 	local -> VARCHAR(200) not null
-	status -> VARCHAR2(8) not null  -- NOVA COLUNA
+	status -> VARCHAR2(8) not null
 	fk - id_contato not null
 	
 - TECNICOS_EMPRESAS (da ao tecnico possibilidade de atender a mais de uma empresa)
@@ -51,18 +53,19 @@ Entidades e Atributos
 	
 - CATALOGO_DEFEITOS
 	pk - id_catalogo_defeito not null
-	codigo_defeito -> VARCHAR(20) not null
+	codigo_defeito -> VARCHAR(50) not null
 	descricao_defeito -> VARCHAR(255)
 	
 - CATALOGO_ACOES
 	pk - id_catalogo_acao not null
-	codigo_acao -> VARCHAR(20) not null
+	codigo_acao -> VARCHAR(50) not null
 	descricao_acao -> VARCHAR(255)
 	
 - DEFEITOS
 	pk - id_defeito not null
 	fk - id_catalogo_defeito not null
 	fk - id_veiculo not null
+	status -> VARCHAR2(50) not null
 	data_reporte -> DATE not null
 	status_defeito -> VARCHAR(15) not null
 	obs_defeitos -> CLOB

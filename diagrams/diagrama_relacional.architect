@@ -22,7 +22,7 @@
     <column id="COL4" populated="true" UUID="6f6018f5-3c08-4441-8bdf-82dc49278cd9" autoIncrement="false" autoIncrementSequenceName="USUARIOS_email_usuario_seq" defaultValue="" name="email_usuario" nullable="0" physicalName="email_usuario" precision="200" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
      <remarks></remarks>
     </column>
-    <column id="COL5" populated="true" UUID="582ddcc7-c80e-4cc6-b76f-d4d3a194af80" autoIncrement="false" autoIncrementSequenceName="USUARIOS_senha_hash_seq" defaultValue="" name="senha_hash" nullable="0" physicalName="senha_hash" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
+    <column id="COL5" populated="true" UUID="582ddcc7-c80e-4cc6-b76f-d4d3a194af80" autoIncrement="false" autoIncrementSequenceName="USUARIOS_senha_seq" defaultValue="" name="senha" nullable="0" physicalName="senha" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
      <remarks></remarks>
     </column>
     </folder>
