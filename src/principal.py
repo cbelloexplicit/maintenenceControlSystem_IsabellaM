@@ -101,15 +101,44 @@ def menu_gerenciar_catalogo_generico(nome_catalogo: str):
         print(f"--- Gerenciar Catálogo de {nome_catalogo} ---")
         print(MENU_CATALOGO_X)
         opcao = input("Escolha uma opção: ")
-
-        if opcao in ['1', '2', '3', '4', '5']:
-            acao_nao_implementada()
-        elif opcao == '0':
+        if opcao == '0':
             break
-        else:
+        elif opcao not in ['0','1','2','3','4','5']:
             print("Opção inválida!")
             input("\nPressione Enter para continuar...")
-
+        elif nome_catalogo =="Defeitos":
+            if opcao == "1":
+                #inserir
+            elif opcao == "2":
+                #listar
+            elif opcao == "3":
+                #buscar
+            elif opcao == "4":
+                #editar
+            elif opcao == "5":
+                #remover
+        elif nome_catalogo == "Ações":
+            if opcao == "1":
+                #inserir
+            elif opcao == "2":
+                #listar
+            elif opcao == "3":
+                #buscar
+            elif opcao == "4":
+                #editar
+            elif opcao == "5":
+                #remover
+        elif nome_catalogo == "Eventos":
+            if opcao == "1":
+                #inserir
+            elif opcao == "2":
+                #listar
+            elif opcao == "3":
+                #buscar
+            elif opcao == "4":
+                #editar
+            elif opcao == "5":
+                #remover
 
 def menu_gerenciar_catalogos(usuario_logado: Usuario):
     while True:
@@ -331,7 +360,8 @@ def menu_gerar_relatorios(usuario_logado: Usuario):
                     print(f"{linha_relatorio['empresa']:<30} | {linha_relatorio['total_defeitos']:<20}")
             input("\nPressione Enter para continuar...")
 
-        #Manutenções em uma Empresa X
+        #relatorio detalhado em uma empresa x - ERRO
+        '''
         elif opcao == '4':
             ui_helper.limpar_tela()
             ui_helper.exibir_cabecalho("RELATÓRIO DETALHADO EM UMA EMPRESA")
@@ -394,7 +424,7 @@ def menu_gerar_relatorios(usuario_logado: Usuario):
                             else:
                                 print("  Nenhum registro de manutenção encontrado.")
             input("\nPressione Enter para voltar...")
-
+        '''
         #voltar
         elif opcao == '0':
             break
