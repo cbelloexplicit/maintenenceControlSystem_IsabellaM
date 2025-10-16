@@ -1,4 +1,4 @@
-from src.conexion.oracle_db import OracleDB
+from src.conexion.oracledb import OracleDB
 from src.model.tecnico import Tecnico
 from src.model.contato import Contato
 

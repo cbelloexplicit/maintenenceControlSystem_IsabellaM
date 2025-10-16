@@ -3,7 +3,7 @@ from src.model.catalogo_defeito import CatalogoDefeitos
 from src.model.veiculo import Veiculo
 
 class Defeito:
-    def __init__(self, id_defeito:int, data_reporte:date, status_defeito:str, obs_defeitos:str, catalogo_defeito:CatalogoDefeito, veiculo:Veiculo):
+    def __init__(self, id_defeito:int, data_reporte:date, status_defeito:str, obs_defeitos:str, catalogo_defeito:CatalogoDefeitos, veiculo:Veiculo):
         self.__id_defeito = id_defeito
         self.__data_reporte = data_reporte
         self.__status_defeito = status_defeito

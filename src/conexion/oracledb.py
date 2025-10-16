@@ -17,7 +17,8 @@ class OracleDB:
             dsn = oracledb.makedsn(self._host, self._port, service_name=self._service_name)
             self.connection = oracledb.connect(user=self._user, password=self._password, dsn=dsn)
             self.cursor = self.connection.cursor()
-            print("Conexão com o Oracle estabelecida com sucesso!")
+            print("--- .-. .- -.-. .-.. . / .. -.")
+            #oracle in
             return True
         except oracledb.DatabaseError as e:
             print(f"Erro ao conectar ao Oracle: {e}")
@@ -29,7 +30,8 @@ class OracleDB:
             self.cursor.close()
         if self.connection:
             self.connection.close()
-            print("Conexão com o Oracle DB fechada.")
+            print("--- .-. .- -.-. .-.. . / --- ..- -")
+            #"oracle out"
 
     def execute_write_query(self, query: str, params: dict = None):
         """Executa uma query no banco de dados (para INSERT, UPDATE, DELETE)."""
@@ -41,7 +43,8 @@ class OracleDB:
             #Executa query
             self.cursor.execute(query, params or {})
             self.connection.commit()
-            print("Query executada com sucesso.")
+            print("--.- ..- . .-. -.-- / .. -.")
+            #query in
         except oracledb.DatabaseError as e:
             print(f"Erro ao executar a query: {e}")
             if self.connection:

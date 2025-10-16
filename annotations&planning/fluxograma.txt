@@ -1,0 +1,69 @@
+Início
+    Exibe a Splash Screen
+    Tela de Login
+        Pede e-mail e senha
+        Validação das credenciais
+        Se erro: Oferece opção -> "Tentar Novamente" (volta para a tela de login) OU "Sair" (encerra o programa)
+        Se sucesso: Avança para o Menu Principal
+    Menu Principal
+        1. Gerenciar Entidades
+            1.1 Gerenciar Empresas
+                --Cadastrar
+                --Listar
+                --Buscar
+                --Atualizar
+                --Remover
+                --Ver Detalhes
+                    ---listar veículos
+                    ---listar contatos
+                    ---listar técnicos da empresa)
+            1.2 Gerenciar Contatos
+                --Cadastrar
+                --Listar
+                --Editar
+                --Buscar
+                --Remover
+            1.3 Gerenciar Técnicos
+                --Cadastrar
+                --Listar
+                --Buscar
+                --Editar
+                --Inativar
+                --Reativar
+                --Associar de Empresa
+                --Desassociar de Empresa
+            1.4 Gerenciar Veículos
+                --Cadastrar
+                --Listar
+                --Buscar
+                --Editar
+                --Inativar
+                --Reativar
+            1.5 Gerenciar Dispositivos (Lots)
+                --Cadastrar
+                --Listar
+                --Buscar
+                --Editar
+                --Ver Histórico Completo
+            1.6 Gerenciar Usuários
+                --Cadastrar
+                --Listar
+                --Buscar
+                --Editar
+                --Remover
+        2. Registrar Operações
+            2.1 Registrar Nova Visita Técnica
+            2.2 Registrar Novo Defeito em Veículo
+            2.3 Registrar Nova Manutenção
+            2.4 Registrar Evento no Histórico de um Dispositivo
+        3. Gerenciar Catálogos
+            3.1 Catálogo de Defeitos
+            3.2 Catálogo de Ações
+            3.3 Catálogo de Eventos
+                    os três geram menu.x
+        4. Gerar Relatórios
+            4.1 Contagem de Visitas por Técnico
+            4.2 Contagem de Visitas por Empresa
+            4.3 Contagem de Defeitos por Empresa
+        0. Sair
+        --- Encerra a aplicação
