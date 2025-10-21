@@ -65,26 +65,26 @@ O sistema exibirá a tela de login. Utilize o usuário Administrador Padrão (Em
 
 ## Organização do Projeto
 
-[cite_start]O projeto segue a estrutura modular sugerida no edital[cite: 133]:
+[cite_start]O projeto segue a estrutura modular sugerida no edital:
 
-* [cite_start]**diagrams:** Contém o diagrama relacional do banco de dados nos formatos `.architect` (SQL Power Architect) e `.pdf`[cite: 114].
-* [cite_start]**sql:** Armazena os scripts SQL[cite: 136].
-    * [cite_start]`main.sql`: Script mestre para criação de todas as tabelas, sequences e relacionamentos[cite: 112].
+* **diagrams:** Contém o diagrama relacional do banco de dados nos formatos `.architect` (SQL Power Architect) e `.pdf`.
+* **sql:** Armazena os scripts SQL.
+    * `main.sql`: Script mestre para criação de todas as tabelas, sequences e relacionamentos.
     * `insert_samples_base.sql`: Script para popular as tabelas de cadastro e catálogo com dados de exemplo.
     * `insert_samples_related.sql`: Script com blocos PL/SQL para popular as tabelas de transação com dados de exemplo relacionados.
-* [cite_start]**src:** Contém o código-fonte Python da aplicação[cite: 113].
-    * [cite_start]**conexion:** Módulo responsável pela conexão com o banco de dados Oracle[cite: 135, 139].
-    * [cite_start]**controller:** Classes controladoras que implementam a lógica de negócio e as operações CRUD, fazendo a ponte entre o `model` e o `conexion`[cite: 141, 144, 145].
-    * [cite_start]**model:** Classes que representam as 15 entidades do diagrama relacional (tabelas)[cite: 134, 137, 138].
-    * [cite_start]**reports:** Módulo responsável por gerar os relatórios solicitados, buscando e formatando os dados[cite: 143, 147].
-    * [cite_start]**utils:** Módulos auxiliares[cite: 142, 146].
+* **src:** Contém o código-fonte Python da aplicação.
+    * **conexion:** Módulo responsável pela conexão com o banco de dados Oracle.
+    * **controller:** Classes controladoras que implementam a lógica de negócio e as operações CRUD, fazendo a ponte entre o `model` e o `conexion`.
+    * **model:** Classes que representam as 15 entidades do diagrama relacional (tabelas).
+    * **reports:** Módulo responsável por gerar os relatórios solicitados, buscando e formatando os dados.
+    * **utils:** Módulos auxiliares.
         * `config.py`: Define as strings de texto dos menus da aplicação.
         * `splash_screen.py`: Controla a exibição da tela de abertura.
         * `ui_helpers.py`: Contém funções para interações comuns com o usuário (limpar tela, selecionar entidade, pedir confirmação).
-* [cite_start]**principal.py:** Script principal que inicializa a aplicação, gerencia o fluxo de menus e une todos os módulos[cite: 148, 149].
+* **principal.py:** Script principal que inicializa a aplicação, gerencia o fluxo de menus e une todos os módulos.
 * **setup_database.py:** Script utilitário para automatizar a criação da estrutura do banco de dados a partir do `main.sql`.
 * **requirements.txt:** Lista as bibliotecas Python necessárias para o projeto.
-* [cite_start]**README.md:** Este arquivo, contendo a documentação do projeto[cite: 118].
+* **README.md:** Este arquivo, contendo a documentação do projeto.
 
 ## Bibliotecas Utilizadas
 
@@ -102,11 +102,11 @@ O sistema exibirá a tela de login. Utilize o usuário Administrador Padrão (Em
 ## [cite_start]Entregáveis
 
 Este repositório contém:
-* [cite_start]✅ Script de criação das tabelas e relacionamentos (`sql/main.sql`)[cite: 112].
-* ✅ Código fonte do programa desenvolvido, organizado em diretórios (`src/`, `principal.py`, etc.)[cite: 113].
-* [cite_start]✅ Diagrama relacional (`diagrams/`)[cite: 114].
-* [cite_start]✅ Vídeo demonstrativo (Link a ser inserido aqui)[cite: 115].
-* ✅ Este arquivo `README.MD` explicando como executar o projeto[cite: 118].
+* ✅ Script de criação das tabelas e relacionamentos (`sql/main.sql`).
+* ✅ Código fonte do programa desenvolvido, organizado em diretórios (`src/`, `principal.py`, etc.).
+* ✅ Diagrama relacional (`diagrams/`).
+* ✅ Vídeo demonstrativo (Link a ser inserido aqui).
+* ✅ Este arquivo `README.MD` explicando como executar o projeto.
 
 ## Equipe
 * **Componentes:**
