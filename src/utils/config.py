@@ -101,24 +101,15 @@ MENU_EDITAR_TECNICOS = """
 ===================================
 """
 
-MENU_GERENCIAR_VEÍCULOS = """
+MENU_GERENCIAR_VEICULOS = """
 ===================================
 =        GERENCIAR VEÍCULOS       =
 ===================================
 = 1 - Cadastrar                   =
 = 2 - Listar                      =
 = 3 - Buscar                      =
-= 4 - Editar                      =
-= 0 - Voltar                      =
-===================================
-"""
-MENU_EDITAR_VEICULOS = """
-===================================
-=        EDITAR TÉCNICOS          =
-===================================
-= 1 - Inativar                    =
-= 2 - Reativar                    =
-= 3 - Atualizar                   =
+= 4 - Atualizar dados             =
+= 5 - Remover                     =
 = 0 - Voltar                      =
 ===================================
 """
@@ -129,23 +120,15 @@ MENU_GERENCIAR_DISPOSITIVOS = """
 = 1 - Cadastrar                   =
 = 2 - Listar                      =
 = 3 - Buscar                      =
-= 4 - Editar                      =
-= 5 - Ver histórico completo      =
-= 0 - Voltar                      =
-===================================
-"""
-MENU_EDITAR_DISPOSITIVOS = """
-===================================
-=     EDITAR DISPOSITIVOS/LOTS    =
-===================================
-= 1 - Atualizar                   =
-= 2 - Remover                     =
+= 4 - Atualizar                   =
+= 5 - Remover                     =
+= 6 - Ver histórico completo      =
 = 0 - Voltar                      =
 ===================================
 """
 MENU_GERENCIAR_USUARIOS = """
 ===================================
-=      GERÊNCIA DE ENTIDADES      =
+=      GERÊNCIA DE USUARIOS       =
 ===================================
 = 1 - Cadastrar                   =
 = 2 - Listar                      =

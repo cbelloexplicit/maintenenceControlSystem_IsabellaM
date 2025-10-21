@@ -202,3 +202,4 @@ class Controller_Manutencao:
         finally:
             if db.connection:
                 db.close()
+        

@@ -101,22 +101,6 @@ class Controller_Tecnico:
         """ Ativa um técnico, mudando seu status para 'ATIVO'. """
         return self._alterar_status_tecnico(id_tecnico, 'ATIVO')
 
-    def _alterar_status_tecnico(self, id_tecnico: int, novo_status: str) -> bool:
-        """auxiliar para alterar o status de um técnico. """
-        db = OracleDB()
-        try:
-            db.connect()
-            query = "UPDATE tecnicos SET status = :status WHERE id_tecnico = :id_tecnico"
-            params = {'status': novo_status, 'id_tecnico': id_tecnico}
-            db.execute_write_query(query, params)
-            print(f"Status do técnico {id_tecnico} alterado para {novo_status} com sucesso!")
-            return True
-        except Exception as e:
-            print(f"Erro ao alterar status do técnico: {e}")
-            return False
-        finally:
-            if db.connection:
-                db.close()
 
     def remover_tecnico(self, id_tecnico: int) -> bool:
         """
