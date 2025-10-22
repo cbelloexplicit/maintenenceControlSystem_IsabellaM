@@ -40,7 +40,7 @@ def executar_script_sql(caminho_script: str):
 
             db.connection.commit()
             print("Script SQL executado com sucesso! Tabelas e sequences foram criadas.")
-
+            return True
     except FileNotFoundError:
         print(f"ERRO: Arquivo de script não encontrado em '{caminho_script}'. Verifique o caminho.")
     except Exception as e:
@@ -49,7 +49,7 @@ def executar_script_sql(caminho_script: str):
             db.connection.rollback()
     finally:
         if db.connection:
-            db.disconnect()
+            db.close()
 
 
 # --- Ponto de Entrada do Script ---

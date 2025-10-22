@@ -589,8 +589,8 @@ def menu_gerenciar_empresas():
             ui_helper.exibir_cabecalho("LISTA DE EMPRESAS")
 
             lista_empresas = ctrl_empresa.listar_empresas()
-                for empresa in lista_empresas:
-                    print(f"{empresa.get_id_empresa()} | {empresa.get_nome_fantasia()} | {empresa.get_endereco()}")
+            for empresa in lista_empresas:
+                print(f"{empresa.get_id_empresa()} | {empresa.get_nome_fantasia()} | {empresa.get_endereco()}")
 
         elif opcao == '5':
             #ver detalhes

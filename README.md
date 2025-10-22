@@ -53,6 +53,7 @@ Com o usuário criado e as dependências instaladas, execute o script Python que
 ```bash
 python setup_database.py
 ```
+ **OBS:** Caso deseje iniciar o programa com os dados SAMPLE rodando, execute o a criação da estrutura do banco de dados diretamente no ORACLE seguindo a ordem de inserção -> main.sql > insert_sample_records.sql > insert_sample_related_records.sql
 
 ## Execução do Projeto
 
