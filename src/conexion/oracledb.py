@@ -18,7 +18,6 @@ class OracleDB:
             self.connection = oracledb.connect(user=self._user, password=self._password, dsn=dsn)
             self.cursor = self.connection.cursor()
             print("--- .-. .- -.-. .-.. . / .. -.")
-            #oracle in
             return True
         except oracledb.DatabaseError as e:
             print(f"Erro ao conectar ao Oracle: {e}")
@@ -31,12 +30,11 @@ class OracleDB:
         if self.connection:
             self.connection.close()
             print("--- .-. .- -.-. .-.. . / --- ..- -")
-            #"oracle out"
 
     def execute_write_query(self, query: str, params: dict = None):
         """Executa uma query no banco de dados (para INSERT, UPDATE, DELETE)."""
         try:
-            # Garantir conexão
+            # Garante conexão
             if not self.connection:
                 self.connect()
 
@@ -44,7 +42,6 @@ class OracleDB:
             self.cursor.execute(query, params or {})
             self.connection.commit()
             print("--.- ..- . .-. -.-- / .. -.")
-            #query in
         except oracledb.DatabaseError as e:
             print(f"Erro ao executar a query: {e}")
             if self.connection:

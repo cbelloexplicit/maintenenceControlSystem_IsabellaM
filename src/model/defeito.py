@@ -11,7 +11,6 @@ class Defeito:
         self.__catalogo_defeito = catalogo_defeito
         self.__veiculo = veiculo
 
-    # Getters
     def get_id_defeito(self) -> int: 
         return self.__id_defeito
     def get_data_reporte(self) -> date: 
@@ -25,7 +24,6 @@ class Defeito:
     def get_veiculo(self) -> Veiculo: 
         return self.__veiculo
 
-    # Setters
     def set_id_defeito(self, id_defeito:int): 
         self.__id_defeito = id_defeito
     def set_data_reporte(self, data_reporte:date): 
@@ -39,7 +37,6 @@ class Defeito:
     def set_veiculo(self, veiculo:Veiculo): 
         self.__veiculo = veiculo
 
-    # To String
     def to_string(self) -> str:
         placa = self.get_veiculo().get_placa() if self.get_veiculo() else "N/A"
         return f"ID: {self.get_id_defeito()} | Status: {self.get_status_defeito()} | Veículo: {placa}"

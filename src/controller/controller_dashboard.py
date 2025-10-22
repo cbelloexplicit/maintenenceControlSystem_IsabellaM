@@ -2,7 +2,6 @@ from src.conexion.oracledb import OracleDB
 
 class ControllerDashboard:
     def __init__(self):
-        #construtor
         pass
     def obter_contagem_registros(self) -> dict:
         db = OracleDB()

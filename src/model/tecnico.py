@@ -7,7 +7,6 @@ class Tecnico:
         self.__local = local
         self.__contato = contato
 
-    # Getters
     def get_status(self) -> str:
         return self.__status
     def get_id_tecnico(self) -> int: 
@@ -17,7 +16,6 @@ class Tecnico:
     def get_contato(self) -> Contato: 
         return self.__contato
 
-    # Setters
     def set_status(self, status: str) -> None:
         self.__status = status
     def set_id_tecnico(self, id_tecnico:int): 
@@ -27,7 +25,6 @@ class Tecnico:
     def set_contato(self, contato:Contato): 
         self.__contato = contato
 
-    # To String
     def to_string(self) -> str:
         nome = self.get_contato().get_nome_contato() if self.get_contato() else "N/A"
         return f"TÉCNICO -> ID: {self.get_id_tecnico()} | Nome: {nome} | Local: {self.get_local()} | Contato: {self.get_contato()} | Status: {self.get_status()}"

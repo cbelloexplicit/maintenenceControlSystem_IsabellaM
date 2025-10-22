@@ -5,7 +5,6 @@ class Usuario:
         self.__email_usuario = email_usuario
         self.__senha = senha
 
-    # Getters
     def get_id_usuario(self) -> int: 
         return self.__id_usuario
     def get_nome_completo(self) -> str: 
@@ -15,7 +14,6 @@ class Usuario:
     def get_senha(self) -> str:
         return self.__senha
 
-    # Setters
     def set_id_usuario(self, id_usuario:int): 
         self.__id_usuario = id_usuario
     def set_nome_completo(self, nome_completo:str): 
@@ -25,6 +23,5 @@ class Usuario:
     def set_senha(self, senha:str):
         self.__senha = senha
 
-    # To String
     def to_string(self) -> str:
         return f"ID: {self.get_id_usuario()} | Nome: {self.get_nome_completo()} | E-mail: {self.get_email_usuario()}"
