@@ -18,7 +18,7 @@ MENU_GERENCIAR_ENTIDADES = """
 = 2 - Gerenciar Contatos          =
 = 3 - Gerenciar Técnicos          =
 = 4 - Gerenciar Veículos          =
-= 5 - Gerenciar Dispositivos/Lots)=
+= 5 - *Gerenciar Dispositivos/Lots=
 = 6 - Gerenciar Usuários          =
 = 0 - Voltar                      =
 ===================================
@@ -115,7 +115,7 @@ MENU_GERENCIAR_VEICULOS = """
 """
 MENU_GERENCIAR_DISPOSITIVOS = """
 ===================================
-=   GERENCIAR DISPOSITIVOS/LOTS   =
+= * GERENCIAR DISPOSITIVOS/LOTS * =
 ===================================
 = 1 - Cadastrar                   =
 = 2 - Listar                      =
@@ -148,7 +148,7 @@ MENU_EDITAR_USUARIOS = """
 """
 MENU_REGISTRAR_OPERACOES = """
 ====================================
-=       REGISTRAR OPERAÇÕES        =
+=   *   REGISTRAR OPERAÇÕES   *    =
 ====================================
 = 1 - Registrar Visita Técnica     =
 = 2 - Registrar Defeito em Veículo =
@@ -186,9 +186,9 @@ MENU_GERAR_RELATORIOS = """
 ====================================
 =      GERADOR DE RELATORIOS       =
 ====================================
-= 1 - Visitas por Técnico          =
-= 2 - Manutencoes                  =
-= 3 - Defeitos                     =
+= 1 - Visitas por Técnico *        =
+= 2 - Manutencoes *                =
+= 3 - Defeitos *                   =
 = 4 - Detalhes em uma Empresa X    =
 = 0 - Voltar                       =
 ====================================
