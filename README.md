@@ -2,6 +2,8 @@
 
 Este sistema simula uma aplicação real para gerenciar a manutenção de veículos de frota, o ciclo de vida de dispositivos rastreadores (lots) e o controle de acesso de usuários. O sistema utiliza Python para a interface e lógica de aplicação, e Oracle como Sistema de Gerenciamento de Banco de Dados.
 
+As funcionalidades ainda não estão 100% implementadas, organizei de forma que a parte base e crítica do projeto chegasse primeiro na entrega, pois algumas funcionalidades e tratamentos de exceção tornariam o trabalho muito longo para ser feito em tempo hábil. Até o presente momento, os menus principais de gerenciamento de empresas, contatos, veículos e técnicos estão funcionando, assim como o splash screen e a função de gerar relatórios detalhados por empresa, que são os pontos principais do trabalho.
+
 ## Pré-requisitos
 
 * Python 3.x
