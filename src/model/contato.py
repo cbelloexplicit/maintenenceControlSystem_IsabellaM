@@ -5,7 +5,6 @@ class Contato:
         self.__email_contato = email_contato
         self.__telefone = telefone
 
-    # Getters
     def get_id_contato(self) -> int: 
         return self.__id_contato
     def get_nome_contato(self) -> str: 
@@ -15,7 +14,6 @@ class Contato:
     def get_telefone(self) -> str: 
         return self.__telefone
 
-    # Setters
     def set_id_contato(self, id_contato:int): 
         self.__id_contato = id_contato
     def set_nome_contato(self, nome_contato:str): 
@@ -25,6 +23,5 @@ class Contato:
     def set_telefone(self, telefone:str): 
         self.__telefone = telefone
 
-    # To String
     def to_string(self) -> str:
         return f"ID: {self.get_id_contato()} | Nome: {self.get_nome_contato()} | E-mail: {self.get_email_contato()}"

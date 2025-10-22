@@ -19,7 +19,6 @@ class LogLot:
         self.__manutencao = manutencao
         self.__catalogo_eventos = catalogo_eventos
 
-    # Getters
     def get_id_log(self) -> int: return self.__id_log
     def get_data_evento(self) -> date: return self.__data_evento
     def get_responsavel_evento(self) -> str: return self.__responsavel_evento
@@ -30,7 +29,6 @@ class LogLot:
     def get_manutencao(self) -> Manutencao: return self.__manutencao
     def get_catalogo_eventos(self) -> CatalogoEventos: return self.__catalogo_eventos
 
-    # Setters
     def set_id_log(self, id_log:int): self.__id_log = id_log
     def set_data_evento(self, data_evento:date): self.__data_evento = data_evento
     def set_responsavel_evento(self, responsavel_evento:str): self.__responsavel_evento = responsavel_evento
@@ -41,7 +39,6 @@ class LogLot:
     def set_manutencao(self, manutencao:Manutencao): self.__manutencao = manutencao
     def set_catalogo_eventos(self, catalogo_eventos:CatalogoEventos): self.__catalogo_eventos = catalogo_eventos
 
-    # To String
     def to_string(self) -> str:
         evento = self.get_catalogo_eventos().get_codigo_evento() if self.get_catalogo_eventos() else "N/A"
         return f"ID: {self.get_id_log()} | Evento: {evento} | Data: {self.get_data_evento()}"

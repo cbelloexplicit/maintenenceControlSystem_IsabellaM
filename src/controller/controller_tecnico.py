@@ -103,18 +103,15 @@ class Controller_Tecnico:
 
 
     def remover_tecnico(self, id_tecnico: int) -> bool:
-        """
-        Primeiro, desassocia de todas as empresas.
-        """
         db = OracleDB()
         try:
             db.connect()
 
-            # Verifica se o técnico está em uso em visitas (regra de negócio para impedir remoção)
+            # Verifica se o técnico está em uso em visitas
             query_check = "SELECT 1 FROM VISITAS_TECNICAS WHERE id_tecnico = :id_tecnico"
             if db.cursor.execute(query_check, {'id_tecnico': id_tecnico}).fetchone():
                 print(
-                    f"Erro: Não é possível remover o técnico (ID: {id_tecnico}), pois ele possui visitas técnicas registradas em seu histórico.")
+                    f"Erro: Não é possível remover o técnico (ID: {id_tecnico}), pois ele possui visitas técnicas registradas.")
                 return False
 
             # Remove associações da tabela de junção
