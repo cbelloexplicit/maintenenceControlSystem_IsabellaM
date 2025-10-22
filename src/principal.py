@@ -309,7 +309,7 @@ def editar_acao_catalogo():
             acao_selecionada.set_descricao_acao(nova_descricao)
 
         if ui_helper.pedir_confirmacao("atualizar este defeito do catálogo"):
-            ctrl_cat_defeitos.atualizar_acao(acao_selecionada)
+            ctrl_cat_acoes.atualizar_acao(acao_selecionada)
 
     input("\nPressione Enter para continuar...")
 
@@ -494,7 +494,7 @@ def menu_ver_detalhes_empresa():
                 print(f"{'ID':<5} | {'PLACA':<10} | {'FROTA':<10}")
                 print("-" * 75)
                 for veiculo in lista_veículos:
-                    print(f"{veiculo.get_id_veiculo:<5} | {veiculo.get_placa:<10} | {veiculo.get_frota:<10}")
+                    print(f"{veiculo.get_id_veiculo():<5} | {veiculo.get_placa():<10} | {veiculo.get_frota():<10}")
                     
             input("\nPressione Enter para continuar...")
         elif opcao == '2':
@@ -509,7 +509,7 @@ def menu_ver_detalhes_empresa():
                 print(f"{'ID':<5} | {'NOME':<25} | {'EMAIL':<30} | {'TELEFONE':<15}")
                 print("-" * 75)
                 for contato in lista_contatos:
-                    print(f"{contato.get_id_contato:<5} | {contato.get_nome_contato:<10} | {contato.get_email_contato:<10} | {contato.get_telefone:<15}")
+                    print(f"{contato.get_id_contato():<5} | {contato.get_nome_contato():<10} | {contato.get_email_contato():<10} | {contato.get_telefone():<15}")
                     
             input("\nPressione Enter para continuar...")
 
@@ -525,7 +525,7 @@ def menu_ver_detalhes_empresa():
                 print(f"{'ID':<5} | {'NOME':<25} | {'EMAIL':<30} | {'TELEFONE':<15}")
                 print("-" * 75)
                 for linha in lista_tecnicos:
-                    print(f"{linha.get_id_tecnico:<5} | {linha.get_nome_contato:<10} | {contato.get_telefone:<15}")
+                    print(f"{linha.get_id_tecnico():<5} | {linha.get_nome_contato():<10} | {contato.get_telefone():<15}")
                     
             input("\nPressione Enter para continuar...")
         elif opcao == '0':
@@ -561,7 +561,7 @@ def menu_gerenciar_empresas():
 
             if ui_helper.pedir_confirmacao(f"inserir a empresa '{nome}' no catálogo"):
                 if ctrl_empresa.inserir_empresa(nova_empresa):
-                    print("\nDefeito inserido no catálogo com sucesso!")
+                    print("\nEmpresa inserida no catálogo com sucesso!")
                 
             input("\nPressione Enter para continuar...")
 
@@ -589,9 +589,9 @@ def menu_gerenciar_empresas():
             ui_helper.exibir_cabecalho("LISTA DE EMPRESAS")
 
             lista_empresas = ctrl_empresa.listar_empresas()
-            print("ID | NOME FANTASIA | ENDEREÇO")
-            for empresas in lista_empresas():
-                print(f"{empresas.get_id_empresa()} | {empresas.get_nome_fantasia()} | {empresas.get_endereco()}")
+                for empresa in lista_empresas:
+                    print(f"{empresa.get_id_empresa()} | {empresa.get_nome_fantasia()} | {empresa.get_endereco()}")
+
         elif opcao == '5':
             #ver detalhes
             menu_ver_detalhes_empresa()
@@ -717,10 +717,8 @@ def menu_gerenciar_contatos():
             if not lista_contatos:
                 print("Nenhum contato cadastrado.")
             else:
-                # Imprime um cabeçalho formatado
                 print(f"{'ID':<5} | {'NOME':<30} | {'E-MAIL':<30} | {'TELEFONE':<15}")
                 print("-" * 85)
-                # Itera e imprime cada contato usando getters
                 for contato in lista_contatos:
                     print(f"{contato.get_id_contato():<5} | {contato.get_nome_contato():<30} | {(contato.get_email_contato() or ''):<30} | {(contato.get_telefone() or ''):<15}")
 
@@ -986,7 +984,6 @@ def buscar_manutencao_interface():
     ui_helper.limpar_tela()
     ui_helper.exibir_cabecalho("BUSCAR MANUTENÇÕES POR VEÍCULO")
 
-    # 1. Pede a placa ao usuário
     placa_busca = input("Digite a placa do veículo para ver o histórico de manutenções: ").strip().upper()
 
     if not placa_busca:
@@ -994,7 +991,6 @@ def buscar_manutencao_interface():
         input("\nPressione Enter para continuar...")
         return
 
-    # 2. Usa o Controller_Veiculo para encontrar o veículo pela placa
     veiculo_encontrado = ctrl_veiculo.buscar_veiculo_por_placa(placa_busca)
 
     if not veiculo_encontrado:
@@ -1002,22 +998,18 @@ def buscar_manutencao_interface():
         input("\nPressione Enter para continuar...")
         return
 
-    # 3. Se o veículo foi encontrado, usa o Controller_Manutencao para listar as manutenções
     id_veiculo = veiculo_encontrado.get_id_veiculo()
     print(f"\nBuscando manutenções para o veículo: {veiculo_encontrado.to_string()}")
     
     lista_manutencoes = ctrl_manutencao.listar_manutencao_em_veiculo(id_veiculo)
 
-    # 4. Exibe os resultados
     if not lista_manutencoes:
         print("\nNenhuma manutenção encontrada para este veículo.")
     else:
         print("\n--- Histórico de Manutenções ---")
-        # Cabeçalho da tabela
         print(f"  {'ID':<5} | {'DATA VISITA':<12} | {'TÉCNICO':<25} | {'AÇÃO':<30} | {'DEFEITO':<30}")
         print("  " + "-" * 110)
         for manutencao in lista_manutencoes:
-            # Extrai os dados dos objetos aninhados para exibição
             visita = manutencao.get_visita()
             acao = manutencao.get_catalogo_acao()
             defeito = manutencao.get_defeito()
@@ -1030,7 +1022,6 @@ def buscar_manutencao_interface():
             desc_acao = acao.get_descricao_acao() if acao else 'N/A'
             desc_defeito = cat_defeito.get_descricao_defeito() if cat_defeito else 'N/A'
             
-            # Limita o tamanho das descrições
             desc_acao = (desc_acao[:27] + '...') if len(desc_acao) > 30 else desc_acao
             desc_defeito = (desc_defeito[:27] + '...') if len(desc_defeito) > 30 else desc_defeito
 
@@ -1049,7 +1040,6 @@ def menu_gerenciar_veiculos():
             ui_helper.limpar_tela()
             ui_helper.exibir_cabecalho("CADASTRAR NOVO VEÍCULO")
 
-            # 1. Seleciona a empresa à qual o veículo pertence
             print("Selecione a empresa proprietária do veículo:")
             empresas = ctrl_empresa.listar_empresas()
             empresa_selecionada = ui_helper.selecionar_entidade(empresas, "empresa")
@@ -1057,32 +1047,28 @@ def menu_gerenciar_veiculos():
                 input("\nPressione Enter para continuar...")
                 return
 
-            # 2. Pede os dados do veículo
             placa = input("Digite a placa do veículo (Ex: ABC1D23): ").strip().upper()
             frota = input("Digite o código da frota (opcional): ").strip()
 
-            # Validações básicas
             if not placa:
                 print("\nErro: A placa é obrigatória.")
                 input("\nPressione Enter para continuar...")
                 return
-            if len(placa) != 7: # Exemplo de validação de formato
+            if len(placa) != 7: 
                 print("\nErro: Formato da placa inválido (deve ter 7 caracteres).")
                 input("\nPressione Enter para continuar...")
                 return
 
-            # 3. Cria o objeto Veiculo
             novo_veiculo_obj = Veiculo(id_veiculo=None,
                                     placa=placa,
                                     frota=frota if frota else None,
                                     empresa=empresa_selecionada)
 
-            # 4. Chama o controller para inserir
             if ui_helper.pedir_confirmacao(f"cadastrar o veículo com placa '{placa}'"):
                 if ctrl_veiculo.inserir_veiculo(novo_veiculo_obj):
                     print("\nVeículo cadastrado com sucesso!")
                 else:
-                    print("\nFalha ao cadastrar veículo.") # Mensagem específica vem do controller
+                    print("\nFalha ao cadastrar veículo.") 
 
             input("\nPressione Enter para continuar...")
         elif opcao == '2':
@@ -1118,7 +1104,6 @@ def menu_gerenciar_veiculos():
                 else:
                     print("\nVeículo encontrado:")
                     print(veiculo_encontrado.to_string())
-                    # Você pode adicionar aqui a chamada para buscar o lote instalado, se desejar
                     lote_instalado = ctrl_veiculo.buscar_lote_instalado(veiculo_encontrado.get_id_veiculo())
                     if lote_instalado:
                         print(f"\nDispositivo (Lote) atualmente instalado: {lote_instalado.to_string()}")
@@ -1141,20 +1126,19 @@ def menu_gerenciar_veiculos():
                 nova_placa = input(f"Nova placa ({veiculo_selecionado.get_placa()}): ").strip().upper()
                 novo_frota = input(f"Novo código de frota ({veiculo_selecionado.get_frota() or ''}): ").strip()
 
-                # Para alterar a empresa, seria necessário um fluxo de seleção de empresa
                 print("\nPara alterar a empresa proprietária, remova e cadastre o veículo novamente.")
 
                 objeto_atualizado = False
                 if nova_placa and len(nova_placa) == 7: # Valida formato
                     veiculo_selecionado.set_placa(nova_placa)
                     objeto_atualizado = True
-                elif nova_placa: # Se digitou algo, mas formato inválido
+                elif nova_placa: 
                     print("Formato de placa inválido, a placa não será alterada.")
 
                 if novo_frota:
                     veiculo_selecionado.set_frota(novo_frota)
                     objeto_atualizado = True
-                elif novo_frota == '': # Se usuário apertou Enter, limpa o campo frota
+                elif novo_frota == '': 
                     veiculo_selecionado.set_frota(None)
                     objeto_atualizado = True
 
@@ -1183,7 +1167,6 @@ def menu_gerenciar_veiculos():
                 if ui_helper.pedir_confirmacao(acao):
                     if ctrl_veiculo.remover_veiculo(veiculo_selecionado.get_id_veiculo()):
                         print("\nVeículo removido com sucesso!")
-                    # A mensagem de erro (se tiver dependências) já vem do controller
 
             input("\nPressione Enter para continuar...")
         elif opcao == '6':
@@ -1213,7 +1196,7 @@ def menu_gerenciar_dispositivos(usuario_logado: Usuario):
                 print("\nErro: O código do lote é obrigatório.")
                 input("\nPressione Enter para continuar...")
                 return
-            if len(codigo) > 7: # Conforme definido no banco
+            if len(codigo) > 7: 
                 print("\nErro: O código do lote deve ter no máximo 7 caracteres.")
                 input("\nPressione Enter para continuar...")
                 return
@@ -1226,7 +1209,7 @@ def menu_gerenciar_dispositivos(usuario_logado: Usuario):
                 if ctrl_lote.inserir_lote(novo_lote_obj):
                     print("\nDispositivo cadastrado com sucesso!")
                 else:
-                    print("\nFalha ao cadastrar dispositivo.") # Msg específica (código duplicado) vem do controller
+                    print("\nFalha ao cadastrar dispositivo.") 
 
             input("\nPressione Enter para continuar...")
         elif opcao == '2':
@@ -1317,7 +1300,6 @@ def menu_gerenciar_dispositivos(usuario_logado: Usuario):
                 if ui_helper.pedir_confirmacao(acao):
                     if ctrl_lote.remover_lote(lote_selecionado.get_id_lot()):
                         print("\nDispositivo removido com sucesso!")
-                    # Msg de erro (se tiver histórico) já vem do controller
 
             input("\nPressione Enter para continuar...")
         elif opcao == '6':
@@ -1548,7 +1530,6 @@ def menu_registrar_operacoes(usuario_logado: Usuario):
                 input("\nPressione Enter para continuar...")
                 return
 
-            # Usaremos a data atual por padrão
             data_visita = date.today()
             print(f"Data da visita registrada como: {data_visita.strftime('%d/%m/%Y')}")
 
@@ -1566,7 +1547,6 @@ def menu_registrar_operacoes(usuario_logado: Usuario):
             ui_helper.limpar_tela()
             ui_helper.exibir_cabecalho("REGISTRAR NOVO DEFEITO EM VEÍCULO")
 
-            # 1. Encontra o veículo pela placa
             placa = input("Digite a placa do veículo que apresentou o defeito: ").strip().upper()
             veiculo_selecionado = ctrl_veiculo.buscar_veiculo_por_placa(placa)
 
@@ -1577,21 +1557,18 @@ def menu_registrar_operacoes(usuario_logado: Usuario):
 
             print(f"\nVeículo selecionado: {veiculo_selecionado.to_string()}")
 
-            # 2. Seleciona o tipo de defeito do catálogo
             print("\nSelecione o tipo de defeito:")
             lista_defeitos_catalogo = ctrl_cat_defeitos.listar_defeitos()
             catalogo_defeito_selecionado = ui_helper.selecionar_entidade(lista_defeitos_catalogo, "tipo de defeito")
 
             if not catalogo_defeito_selecionado:
-                input("\nPressione Enter para continuar...") # Pausa se a seleção for cancelada
-                return # Operação cancelada
+                input("\nPressione Enter para continuar...")
+                return
 
-            # 3. Coleta as informações restantes
-            data_reporte = date.today() # Pega a data atual
-            status_defeito = "ABERTO" # Todo novo defeito começa como "ABERTO"
+            data_reporte = date.today() 
+            status_defeito = "ABERTO" 
             obs_defeitos = input("Digite observações sobre o defeito (opcional): ").strip()
 
-            # 4. Cria o objeto Defeito
             novo_defeito_obj = Defeito(id_defeito=None,
                                     catalogo_defeito=catalogo_defeito_selecionado,
                                     veiculo=veiculo_selecionado,
@@ -1599,7 +1576,6 @@ def menu_registrar_operacoes(usuario_logado: Usuario):
                                     status_defeito=status_defeito,
                                     obs_defeitos=obs_defeitos if obs_defeitos else None)
 
-            # 5. Chama o controller para inserir
             if ui_helper.pedir_confirmacao("registrar este defeito"):
                 if ctrl_defeito.inserir_defeito(novo_defeito_obj):
                     print("\nDefeito registrado com sucesso!")
@@ -1612,7 +1588,6 @@ def menu_registrar_operacoes(usuario_logado: Usuario):
             ui_helper.limpar_tela()
             ui_helper.exibir_cabecalho("REGISTRAR NOVA MANUTENÇÃO")
 
-            # 1. Seleciona o técnico que realizou a visita
             print("Selecione o técnico que realizou a visita:")
             nome_tecnico = input("Digite o nome do técnico: ")
             tecnicos_encontrados = ctrl_tecnico.buscar_tecnicos_por_nome(nome_tecnico) # Busca apenas ativos por padrão
@@ -1622,8 +1597,7 @@ def menu_registrar_operacoes(usuario_logado: Usuario):
                 input("\nPressione Enter para continuar...")
                 return
 
-            # 2. Cria o registro da Visita Técnica
-            data_visita = date.today() # Simplificação
+            data_visita = date.today() 
             print(f"\nRegistrando visita técnica para {tecnico_selecionado.get_contato().get_nome_contato()} em {data_visita.strftime('%d/%m/%Y')}")
             nova_visita_obj = VisitaTecnica(id_visita=None, tecnico=tecnico_selecionado, data_visita=data_visita)
             if not ctrl_visita.inserir_visita(nova_visita_obj):
@@ -1636,10 +1610,8 @@ def menu_registrar_operacoes(usuario_logado: Usuario):
                 print("\nErro crítico: Não foi possível recuperar a visita recém-criada.")
                 input("\nPressione Enter para continuar...")
                 return
-            visita_registrada = visitas_do_tecnico[0] # Assume que a primeira (mais recente) é a correta
+            visita_registrada = visitas_do_tecnico[0] 
 
-
-            # 3. Seleciona o veículo e o defeito a ser tratado
             placa = input("\nDigite a placa do veículo que recebeu a manutenção: ").strip().upper()
             veiculo = ctrl_veiculo.buscar_veiculo_por_placa(placa)
             if not veiculo:
@@ -1662,7 +1634,6 @@ def menu_registrar_operacoes(usuario_logado: Usuario):
                 input("\nPressione Enter para continuar...")
                 return
 
-            # 4. Seleciona a ação realizada do catálogo
             print("\nSelecione a ação que foi realizada:")
             acoes_catalogo = ctrl_cat_acoes.listar_acoes()
             acao_selecionada = ui_helper.selecionar_entidade(acoes_catalogo, "ação")
@@ -1671,21 +1642,17 @@ def menu_registrar_operacoes(usuario_logado: Usuario):
                 input("\nPressione Enter para continuar...")
                 return
 
-            # 5. Coleta as informações restantes
             obs_servico = input("Digite as observações do serviço (opcional): ").strip()
 
-            # 6. Cria o objeto Manutenção
             nova_manutencao_obj = Manutencao(id_manutencao=None,
                                             visita=visita_registrada,
                                             catalogo_acao=acao_selecionada,
                                             defeito=defeito_selecionado,
                                             obs_servico=obs_servico if obs_servico else None)
 
-            # 7. Insere a manutenção e atualiza o status do defeito
             if ui_helper.pedir_confirmacao("registrar esta manutenção"):
                 if ctrl_manutencao.inserir_manutencao(nova_manutencao_obj):
                     print("\nManutenção registrada com sucesso!")
-                    # Atualiza o status do defeito para 'FECHADO'
                     defeito_selecionado.set_status_defeito('FECHADO')
                     if ctrl_defeito.atualizar_defeito(defeito_selecionado):
                         print(f"Status do defeito ID {defeito_selecionado.get_id_defeito()} atualizado para 'FECHADO'.")
@@ -1700,7 +1667,6 @@ def menu_registrar_operacoes(usuario_logado: Usuario):
             ui_helper.limpar_tela()
             ui_helper.exibir_cabecalho("REGISTRAR EVENTO NO HISTÓRICO DO LOT")
 
-            # 1. Seleciona o Lote
             codigo_lote = input("Digite o código do Lote (Dispositivo): ").strip().upper()
             lote_selecionado = ctrl_lote.buscar_lote_por_codigo(codigo_lote)
             if not lote_selecionado:
@@ -1709,7 +1675,6 @@ def menu_registrar_operacoes(usuario_logado: Usuario):
                 return
             print(f"Dispositivo selecionado: {lote_selecionado.to_string()}")
 
-            # Seleciona o Tipo de Evento
             print("\nSelecione o tipo de evento:")
             eventos_catalogo = ctrl_cat_eventos.listar_eventos()
             evento_selecionado = ui_helper.selecionar_entidade(eventos_catalogo, "tipo de evento")
@@ -1841,7 +1806,7 @@ def menu_gerar_relatorios(usuario_logado: Usuario):
 
             nome_busca = input("Digite o nome da empresa: ")
             empresas_encontradas = ctrl_empresa.buscar_empresa_por_nome(nome_busca)
-            empresa_selecionada = ui_helper.selecionar_entidade(empresas_encontradas, "empresa") # Reutiliza o helper de seleção
+            empresa_selecionada = ui_helper.selecionar_entidade(empresas_encontradas, "empresa") 
 
             if empresa_selecionada:
                 id_empresa = empresa_selecionada.get_id_empresa()
@@ -1867,7 +1832,7 @@ def menu_gerar_relatorios(usuario_logado: Usuario):
                     print(f"  {'PLACA':<10} | {'FROTA':<15}")
                     print("  " + "-" * 28)
                     for veiculo in dados_relatorio["veiculos"]:
-                        print(f"  {veiculo['placa']:<10} | {(veiculo['frota'] or ''):<15}") # Adicionado (or '') para caso frota seja None
+                        print(f"  {veiculo['placa']:<10} | {(veiculo['frota'] or ''):<15}")
                 else:
                     print("  Nenhum veículo cadastrado.")
 
@@ -1886,7 +1851,7 @@ def menu_gerar_relatorios(usuario_logado: Usuario):
                     print("  " + "-" * 82)
                     for manutencao in dados_relatorio["manutencoes"]:
                         data_formatada = manutencao['data'].strftime('%d/%m/%Y') if manutencao['data'] else 'N/A'
-                        defeito_desc = (manutencao['defeito'][:27] + '...') if manutencao['defeito'] and len(manutencao['defeito']) > 30 else (manutencao['defeito'] or '') # Garante que não seja None
+                        defeito_desc = (manutencao['defeito'][:27] + '...') if manutencao['defeito'] and len(manutencao['defeito']) > 30 else (manutencao['defeito'] or '') 
                         print(f"  {data_formatada:<12} | {manutencao['placa']:<10} | {defeito_desc:<30} | {manutencao['tecnico']:<25}")
                 else:
                     print("  Nenhum registro de manutenção encontrado.")
