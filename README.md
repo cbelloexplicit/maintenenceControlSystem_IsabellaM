@@ -4,6 +4,9 @@ Este sistema simula uma aplicação real para gerenciar a manutenção de veícu
 
 As funcionalidades ainda não estão 100% implementadas, organizei de forma que a parte base e crítica do projeto chegasse primeiro na entrega, pois algumas funcionalidades e tratamentos de exceção tornariam o trabalho muito longo para ser feito em tempo hábil. Até o presente momento, os menus principais de gerenciamento de empresas, contatos, veículos e técnicos estão funcionando, assim como o splash screen e a função de gerar relatórios detalhados por empresa, que são os pontos principais do trabalho.
 
+No teste inicial, é possível ver como certas funcionalidades ainda geram erro.
+VIDEO === https://youtu.be/ggaRv6nV9pY
+
 ## Pré-requisitos
 
 * Python 3.x
