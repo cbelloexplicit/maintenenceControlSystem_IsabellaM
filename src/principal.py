@@ -473,7 +473,7 @@ def menu_ver_detalhes_empresa():
         ui_helper.limpar_tela()
         #escolher empresa antes
         ui_helper.limpar_tela()
-        print(MENU_EDITAR_EMPRESAS)
+        print(MENU_VER_DETALHES)
         opcao = input("Escolha uma opção: ")
 
         escolha = input("Pesquise a empresa que deseja editar: ")
