@@ -4,8 +4,6 @@ from src.model.veiculo import Veiculo
 from src.model.contato import Contato
 from src.model.tecnico import Tecnico
 
-# o programa no main deve conferir o ID da modificação, exclusão, etc
-#antes de realizar qualquer alteração ou liberar informações
 class Controller_Empresa:
     def __init__(self):
         pass

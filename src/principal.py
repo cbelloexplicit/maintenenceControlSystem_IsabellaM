@@ -1889,18 +1889,6 @@ def menu_principal(usuario_logado: Usuario):
             input("\nPressione Enter para continuar...")
 #START
 if __name__ == '__main__':
-    '''
-    #splash screen
-    splash = SplashScreen()
-    splash.run()
-    #login - armazena usuario
-    usuario = login()
-    #se o login foi bem-sucedido E a tentativa de conexão com o oracle inicial deu certo, chama o menu principal
-    if usuario:
-        menu_principal(usuario)
-    else:
-        print("Encerrando o programa...")
-    '''
     print("MODO DE TESTE: Entrando diretamente no menu principal.")
     usuario_teste = Usuario(id_usuario=99, nome_completo="Usuário de Teste", email_usuario="teste@teste.com",
                             senha="123")

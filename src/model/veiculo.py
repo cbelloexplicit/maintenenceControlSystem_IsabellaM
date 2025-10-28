@@ -7,7 +7,6 @@ class Veiculo:
         self.__frota = frota
         self.__empresa = empresa
 
-    # Getters
     def get_id_veiculo(self) -> int: 
         return self.__id_veiculo
     def get_placa(self) -> str: 
@@ -17,7 +16,6 @@ class Veiculo:
     def get_empresa(self) -> Empresa: 
         return self.__empresa
 
-    # Setters
     def set_id_veiculo(self, id_veiculo:int): 
         self.__id_veiculo = id_veiculo
     def set_placa(self, placa:str): 
@@ -27,6 +25,5 @@ class Veiculo:
     def set_empresa(self, empresa:Empresa): 
         self.__empresa = empresa
 
-    # To String
     def to_string(self) -> str:
         return f"ID: {self.get_id_veiculo()} | Placa: {self.get_placa()} | Frota: {self.get_frota()}"
